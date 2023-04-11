@@ -4,6 +4,7 @@ from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import *
 import MainWindow as mw
+import MenuWindow as mw2
         
 
 
@@ -13,7 +14,7 @@ class app(QApplication):
     def __init__(self, argv):
         super(app, self).__init__(argv)
         self.window = mw.MainWindow()
-        # self.menu = MenuWindow()
+        self.menu = mw2.MenuWindow()
         self.widget = QtWidgets.QStackedWidget()
         self.widget.addWidget(self.window)
         self.widget.addWidget(self.menu)
