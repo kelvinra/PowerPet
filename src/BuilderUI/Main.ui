@@ -30,7 +30,6 @@ border-image:url(&quot;src/Assets/HomeScreen.png&quot;)
    <property name="styleSheet">
     <string notr="true">QPushButton{
 background-color: rgb(156, 235, 252, 0);
-border-image:url(&quot;src/Assets/HomeScreen.png&quot;)
 }</string>
    </property>
    <property name="text">
