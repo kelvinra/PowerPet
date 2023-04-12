@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="images">
     <file>image 4.png</file>
+    <file>Mask group dexter (1).png</file>
   </qresource>
 </RCC>
