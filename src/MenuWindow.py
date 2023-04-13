@@ -27,13 +27,16 @@ class MenuWindow(QDialog):
         self.carouselLayout.setObjectName("carouselLayout")
         self.carousel.setLayout(self.carouselLayout)
 
+    def showEvent(self, event):
+        self.createCard()
+
     def slideleft(self):
         self.animation = QPropertyAnimation(self.carousel, b"pos")
         self.animation.setEasingCurve(QEasingCurve.InOutCubic)
         self.animation.setStartValue(QPoint(self.poscarosel, 250))
         self.poscarosel += 480
         self.animation.setEndValue(QPoint(self.poscarosel,250))
-        self.animation.setDuration(500)
+        self.animation.setDuration(1000)
         self.animation.start()
 
     def slideright(self):
@@ -42,8 +45,9 @@ class MenuWindow(QDialog):
         self.animation.setStartValue(QPoint(self.poscarosel, 250))
         self.poscarosel -= 480
         self.animation.setEndValue(QPoint(self.poscarosel,250))
-        self.animation.setDuration(500)
+        self.animation.setDuration(1000)
         self.animation.start()
+
 
     def createCard(self):
         self.con = mdb.connect('src\DataBase\Hewan.db')
@@ -53,6 +57,8 @@ class MenuWindow(QDialog):
         print (self.cur.rowcount)
         rows = self.cur.fetchall()
         print(len(rows))
+        i = 1
+        group = QParallelAnimationGroup()
         for row in rows:
         # set the geometry of the frame
             self.frame = QFrame(self.carousel)
@@ -61,7 +67,8 @@ class MenuWindow(QDialog):
             self.frame.setMaximumSize(460, 631)  # set the maximum size of the frame[count]
             self.frame.setMinimumSize(460, 631)  # set the minimum size of the frame[count]
             self.frame.setStyleSheet("background-color: rgb(220, 220, 220); border-radius: 15px;")
-            self.frame.setObjectName("frame")
+            name = "frame" + str(i)
+            self.frame.setObjectName(name)
             
             # create Label in frame
             self.label = QLabel(self.frame)
@@ -83,6 +90,10 @@ class MenuWindow(QDialog):
             self.label_2.setStyleSheet("font: 75 30pt \"Inter\"; color: rgb(0, 0, 0);")
             self.label_2.setObjectName("label_2")
             self.label_2.setText(row[1])
+
+            # self.detail = QPushButton(self.frame)
+            # self.detail.setGeometry(QRect(150, 440, 180, 80))
+            # self.detail.setStyleSheet("backgroun")
             
             # add the frame to the carousel layout
             self.carouselLayout.setSpacing(5)
@@ -94,7 +105,6 @@ class MenuWindow(QDialog):
             self.carousel.setLayout(self.carouselLayout)
         
         self.con.close()
-
 
 
     def tambahHewan(self):
