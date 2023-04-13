@@ -19,7 +19,7 @@ class app(QApplication):
         self.widget.addWidget(self.window)
         self.widget.addWidget(self.menu)
         self.widget.setFixedWidth(1920)
-        self.widget.setFixedHeight(1080)
+        self.widget.setFixedHeight(1024)
         self.widget.show()
         self.window.Logo.clicked.connect(lambda: self.widget.setCurrentIndex(1))
     
