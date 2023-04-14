@@ -18,7 +18,7 @@
 background-image: url(src/Assets/Menu.png);
 }</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="inputFoto">
    <property name="geometry">
     <rect>
      <x>100</x>
@@ -28,7 +28,7 @@ background-image: url(src/Assets/Menu.png);
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-image: url(src/Assets/Group 8.png);
+    <string notr="true">
 border : none;
 border-radius: 34px;
 background-repeat: none;
@@ -38,7 +38,7 @@ background-repeat: none;
     <string/>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="inputNama">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -65,7 +65,7 @@ border: 1px solid black;
     <string>Masukkan Nama</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_2">
+  <widget class="QLineEdit" name="inputJenis">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -102,16 +102,16 @@ border: 1px solid black;
     </rect>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="page">
-    <widget class="QLineEdit" name="lineEdit_3">
+    <widget class="QLineEdit" name="inputBirth">
      <property name="geometry">
       <rect>
        <x>5</x>
        <y>0</y>
-       <width>351</width>
-       <height>40</height>
+       <width>450</width>
+       <height>50</height>
       </rect>
      </property>
      <property name="font">
@@ -133,13 +133,13 @@ border-radius: 10px;
       <string>Masukkan tanggal lahir</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_4">
+    <widget class="QLineEdit" name="inputGender">
      <property name="geometry">
       <rect>
        <x>5</x>
-       <y>60</y>
-       <width>351</width>
-       <height>40</height>
+       <y>70</y>
+       <width>450</width>
+       <height>50</height>
       </rect>
      </property>
      <property name="font">
@@ -161,13 +161,13 @@ border-radius: 10px;
       <string>Masukkan jenis kelamin</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_5">
+    <widget class="QLineEdit" name="inputBerat">
      <property name="geometry">
       <rect>
        <x>5</x>
-       <y>120</y>
-       <width>351</width>
-       <height>40</height>
+       <y>140</y>
+       <width>450</width>
+       <height>50</height>
       </rect>
      </property>
      <property name="font">
@@ -189,13 +189,13 @@ border-radius: 10px;
       <string>Masukkan berat</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_6">
+    <widget class="QLineEdit" name="inputUmur">
      <property name="geometry">
       <rect>
        <x>5</x>
-       <y>180</y>
-       <width>351</width>
-       <height>40</height>
+       <y>210</y>
+       <width>450</width>
+       <height>50</height>
       </rect>
      </property>
      <property name="font">
@@ -222,7 +222,7 @@ border-radius: 10px;
     </widget>
    </widget>
    <widget class="QWidget" name="page_2">
-    <widget class="QLineEdit" name="lineEdit_7">
+    <widget class="QLineEdit" name="inputJenisMakanan">
      <property name="geometry">
       <rect>
        <x>5</x>
@@ -250,7 +250,7 @@ border-radius: 10px;
       <string>Masukkan jenis makanan</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_8">
+    <widget class="QLineEdit" name="inputNamaMakanan">
      <property name="geometry">
       <rect>
        <x>5</x>
@@ -280,7 +280,7 @@ border-radius: 10px;
     </widget>
    </widget>
    <widget class="QWidget" name="page_3">
-    <widget class="QLineEdit" name="lineEdit_9">
+    <widget class="QLineEdit" name="inputKesehatan">
      <property name="geometry">
       <rect>
        <x>5</x>
@@ -308,7 +308,7 @@ border-radius: 10px;
       <string>Masukkan catatan kesehatan</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_10">
+    <widget class="QLineEdit" name="inputPeriode">
      <property name="geometry">
       <rect>
        <x>5</x>
@@ -336,7 +336,7 @@ border-radius: 10px;
       <string>Masukkan Periode</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_11">
+    <widget class="QLineEdit" name="inputTanggalKesehatan">
      <property name="geometry">
       <rect>
        <x>5</x>
@@ -453,6 +453,22 @@ text-decoration: underline;
    <property name="text">
     <string>Catatan
  Kesehatan</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="backHome">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>60</y>
+     <width>411</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border:none</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>

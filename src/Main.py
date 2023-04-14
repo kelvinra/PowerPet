@@ -26,6 +26,8 @@ class app(QApplication):
         self.widget.show()
         self.window.Logo.clicked.connect(lambda: self.widget.setCurrentIndex(1))
         self.menu.Add.clicked.connect(lambda: self.widget.setCurrentIndex(2))
+        self.add.submitbtn.clicked.connect(lambda: self.widget.setCurrentIndex(1))
+        self.add.backHome.clicked.connect(lambda: self.widget.setCurrentIndex(1))
     
 
 

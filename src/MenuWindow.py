@@ -182,7 +182,7 @@ class MenuWindow(QDialog):
             self.animation.setDuration(1300)
             self.group_animation.addAnimation(self.animation)
             j += 480
-        self.group_animation.start()
+        # self.group_animation.start()
         self.con.close()
 
     def detail(self):
