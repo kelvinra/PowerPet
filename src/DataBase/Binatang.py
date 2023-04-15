@@ -21,11 +21,11 @@ q4 = "INSERT INTO Hewan (ID,nama,jenis,umur,birthdate,berat,foto) \
 
 q5 = "INSERT INTO Hewan (ID,nama,jenis,umur,birthdate,berat,foto) \
         VALUES (4, 'Guppy', 'Guppy Fish', 1, '2018-01-10', 1, 'D:\Kelvin\code\semester 4\RPL\if2250-2023-k03-4-powerpet\src\Assets\Guppy.png')"
-conn.execute(q2)
-conn.execute(q3)
-conn.execute(q4)
-conn.execute(q5)
-conn.commit()
+# conn.execute(q2)
+# conn.execute(q3)
+# conn.execute(q4)
+# conn.execute(q5)
+# conn.commit()
 
 print ("Table created successfully");
 

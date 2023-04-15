@@ -54,7 +54,6 @@ class AddWindow(QDialog):
         self.cur = self.con.cursor()
         self.cur.execute("SELECT count(ID) FROM Hewan")
         rows = self.cur.fetchall()
-        self.test.setText(str(rows[0][0]))
         id = rows[0][0]+1
         q1 = "INSERT INTO Hewan (ID,nama,jenis,umur,birthdate,berat,foto) VALUES (" + str(id) + ", '" + self.inputHewan.text() + "', '" + self.inputJenis.text() + "', " + self.inputUmur.text() + ", '" + self.inputBirth.text() + "', " + self.inputBerat.text() + ", '" + self.fileName + "')"
         self.con.execute(q1)
