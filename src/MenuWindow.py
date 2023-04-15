@@ -29,16 +29,19 @@ class MenuWindow(QDialog):
         self.poscarosel = 0
         self.jumlahHewan = 0
         self.carouselwidth = 1920
+        self.carousel = QFrame(self)
         
 
         # set the QStackedLayout as the layout for the carousel widget
+        
+    def showEvent(self, event):
+
+        self.carousel.setGeometry(QRect(0, self.poscarosel, 1920, 631))
         self.carouselLayout = QHBoxLayout(self.carousel)
         self.carouselLayout.setSpacing(15)
         self.carouselLayout.setContentsMargins(0, 0, 0, 0)
         self.carouselLayout.setObjectName("carouselLayout")
         self.carousel.setLayout(self.carouselLayout)
-        
-    def showEvent(self, event):
         self.createCard()
 
     def slideleft(self):
@@ -58,13 +61,14 @@ class MenuWindow(QDialog):
         self.animation.setEndValue(QPoint(self.poscarosel,200))
         self.animation.setDuration(1000)
         self.animation.start()
-    def animate(self, widget, pos):
-        widget.show()
-        self.animation = QPropertyAnimation(widget, b"pos")
-        self.animation.setEasingCurve(QEasingCurve.InOutCubic)
-        self.animation.setStartValue(QPoint(1920, 0))
-        self.animation.setEndValue(QPoint(pos,0))
-        self.animation.setDuration(1000)
+
+    # def animate(self, widget, pos):
+    #     widget.show()
+    #     self.animation = QPropertyAnimation(widget, b"pos")
+    #     self.animation.setEasingCurve(QEasingCurve.InOutCubic)
+    #     self.animation.setStartValue(QPoint(1920, 0))
+    #     self.animation.setEndValue(QPoint(pos,0))
+    #     self.animation.setDuration(1000)
 
     def createCard(self):
         self.con = mdb.connect('src\DataBase\Hewan.db')
@@ -157,20 +161,19 @@ class MenuWindow(QDialog):
         self.button9 = self.findChild(btn.DetailButton, "detail9")
         self.button10 = self.findChild(btn.DetailButton, "detail10")
         self.button11 = self.findChild(btn.DetailButton, "detail11")
-        self.frame1.hide()
-        self.frame2.hide()
-        self.frame3.hide()
-        self.frame4.hide()
-        self.animasi1 = self.animate(self.frame1, 0)
-        self.animasi2 = self.animate(self.frame2, 480)
-        self.animasi3 = self.animate(self.frame3, 960)
-        self.animasi4 = self.animate(self.frame4, 1440)
-        # group = QParallelAnimationGroup()
-        # group.addAnimation(self.animasi1)
-        # group.addAnimation(self.animasi2)
-        # group.addAnimation(self.animasi3)
-        # group.addAnimation(self.animasi4)
-        # group.start()
+        if self.frames.count == 1:
+            self.frame1.hide()
+        elif self.frames.count == 2:
+            self.frame2.hide()
+        elif self.frames.count == 3:
+            self.frame3.hide()
+        elif self.frames.count == 4:
+            self.frame4.hide()
+        # self.animasi1 = self.animate(self.frame1, 0)
+        # self.animasi2 = self.animate(self.frame2, 480)
+        # self.animasi3 = self.animate(self.frame3, 960)
+        # self.animasi4 = self.animate(self.frame4, 1440)
+    
         self.group_animation = QParallelAnimationGroup()
         j = 0
         for frame in self.frames:
@@ -182,7 +185,7 @@ class MenuWindow(QDialog):
             self.animation.setDuration(1300)
             self.group_animation.addAnimation(self.animation)
             j += 480
-        # self.group_animation.start()
+        self.group_animation.start()
         self.con.close()
 
     def detail(self):
