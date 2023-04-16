@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1920</width>
+    <height>1024</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog{
+Background-image:url(src/Assets/Menu.png)
+}</string>
+  </property>
+  <widget class="QTableWidget" name="tableWidget">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>360</y>
+     <width>1611</width>
+     <height>681</height>
+    </rect>
+   </property>
+   <column>
+    <property name="text">
+     <string>Nama klinik</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Alamat</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Jam praktek</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Telepon</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QLineEdit" name="searchBar">
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>280</y>
+     <width>450</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Inter</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>IBeamCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+background-color: rgb(255,255,255);
+color: rgb(0,0,0);
+border: 1px solid black;
+border-radius: 25px;
+
+}</string>
+   </property>
+   <property name="placeholderText">
+    <string>    Telusuri kata kunci...</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>220</y>
+     <width>331</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>24</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: redrgb(255, 170, 127);
+</string>
+   </property>
+   <property name="text">
+    <string>Klinik Hewan</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
