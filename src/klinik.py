@@ -18,6 +18,8 @@ class klinikWindow(QDialog):
         self.tableWidget.setColumnWidth(3, 150)
         
         self.load_data()
+        searchBar = self.findChild(QLineEdit, 'searchBar_2')
+        searchBar.textChanged.connect(lambda: self.search_data(searchBar.text().lower()))
 
     def load_data(self):
         conn = sqlite3.connect('src/DataBase/Hewan.db')
@@ -31,19 +33,20 @@ class klinikWindow(QDialog):
         self.tableWidget.setHorizontalHeaderLabels(['Nama Klinik', 'Alamat', 'Jam Praktek', 'Kontak'])
         self.tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
 
-
         # tampilkan data ke dalam tableWidget
         for row_num, row_data in enumerate(data):
             for col_num, col_data in enumerate(row_data[1:]): # mulai dari indeks ke-1 untuk menghilangkan kolom IDKlinik
                 self.tableWidget.setItem(row_num, col_num, QtWidgets.QTableWidgetItem(str(col_data)))
-    def search_data(self):
-        search_term = self.searchLineEdit.text().lower()
+                
+    def search_data(self, search_term):
+        print("Search term:", search_term)
         conn = sqlite3.connect('src/DataBase/Hewan.db')
         cur = conn.cursor()
-        cur.execute("SELECT * FROM klinik WHERE LOWER(NamaKlinik) LIKE ? OR LOWER(Alamat) LIKE ? OR LOWER(Kontak) LIKE ?",
+        cur.execute("SELECT * FROM klinik WHERE LOWER(NamaKlinik) LIKE ? OR LOWER(Alamat) LIKE ? OR LOWER(Telepon) LIKE ?",
                     ('%' + search_term + '%', '%' + search_term + '%', '%' + search_term + '%'))
         data = cur.fetchall()
         self.tableWidget.setRowCount(len(data))
         for row_num, row_data in enumerate(data):
             for col_num, col_data in enumerate(row_data[1:]):
                 self.tableWidget.setItem(row_num, col_num, QtWidgets.QTableWidgetItem(str(col_data)))
+
