@@ -1,6 +1,6 @@
 import sqlite3
 
-conn = sqlite3.connect('src/DataBase/Hewan.db')
+conn = sqlite3.connect('DataBase/Hewan.db')
 print ("Opened database successfully")
 q1 = '''CREATE TABLE IF NOT EXISTS Hewan
          (ID INT PRIMARY KEY     NOT NULL,
