@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1920</width>
-    <height>1024</height>
+    <height>1132</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,11 +21,49 @@ Background-image:url(src/Assets/Menu.png)
   <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
     <rect>
-     <x>160</x>
+     <x>370</x>
      <y>360</y>
-     <width>1611</width>
-     <height>681</height>
+     <width>1131</width>
+     <height>561</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Open Sans,sans-serif</family>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QTableWidget {
+    background-color: #F2F2F2;
+    border: 1px solid #D1D1D1;
+    font-family: &quot;Open Sans&quot;, sans-serif;
+}
+
+QHeaderView::section {
+    background-color: #F2F2F2;
+    color: #444444;
+    padding: 10px;
+    border: 1px solid #D1D1D1;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: &quot;Open Sans&quot;, sans-serif;
+}
+
+QTableWidget::item {
+    padding: 10px;
+    border: 1px solid #D1D1D1;
+    font-size: 12px;
+    font-family: &quot;Open Sans&quot;, sans-serif;
+}
+
+QTableWidget::item:selected {
+    background-color: #0078D7;
+    color: #FFFFFF;
+}
+</string>
    </property>
    <column>
     <property name="text">
@@ -48,42 +86,11 @@ Background-image:url(src/Assets/Menu.png)
     </property>
    </column>
   </widget>
-  <widget class="QLineEdit" name="searchBar">
-   <property name="geometry">
-    <rect>
-     <x>650</x>
-     <y>280</y>
-     <width>450</width>
-     <height>50</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Inter</family>
-     <pointsize>14</pointsize>
-    </font>
-   </property>
-   <property name="cursor">
-    <cursorShape>IBeamCursor</cursorShape>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QLineEdit {
-background-color: rgb(255,255,255);
-color: rgb(0,0,0);
-border: 1px solid black;
-border-radius: 25px;
-
-}</string>
-   </property>
-   <property name="placeholderText">
-    <string>    Telusuri kata kunci...</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
      <x>160</x>
-     <y>220</y>
+     <y>190</y>
      <width>331</width>
      <height>71</height>
     </rect>
@@ -101,6 +108,29 @@ border-radius: 25px;
    </property>
    <property name="text">
     <string>Klinik Hewan</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="searchBar_2">
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>250</y>
+     <width>581</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+background-color: rgb(255,255,255);
+color: rgb(0,0,0);
+border: 1px solid black;
+border-radius: 25px;
+padding-left: 30px;
+padding-right: 30px;
+}</string>
+   </property>
+   <property name="placeholderText">
+    <string>Telusuri kata kunci ...</string>
    </property>
   </widget>
  </widget>
