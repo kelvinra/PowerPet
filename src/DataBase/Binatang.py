@@ -49,11 +49,11 @@ q5 = '''CREATE TABLE IF NOT EXISTS Klinik
 #       (12, 'King petshop', 'Lingkungan Mendut 3 RT 3 RW 6 Mendut Mungkid magelang', '9:00:00 AM', '085228564644'), \
 #       (13, 'Afiyat vetcare and support', 'Jl. Kol ahmad syam no 136 B jatinangor', '10:00:00 AM', '08121427140'), \
 #       (14, 'Praktek Dokter Hewan dr. Ul', 'Jln. Tirta Kencana 1 No. 1, RT. 01/02, Kec. Ciputat, Kota Tangerang Selatan, Banten 15412', '9:00:00 AM', '08121111111'), \
-#       (15, 'Ocha vet klinik', 'Jl. Kebon Sirih No. 1, RT.1/RW.1, Kebon Sirih, Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10340', '08.00-17.00', '0213900000'), \
+#       (15, 'Klinik Hewan Momo', 'Jl kencana II no 19, Rajawali KM 5,5. Palangkaraya. Kalimantan Tengah', '8.00.00 AM', '08115202089'), \
 #       (16, 'Zoom Pet Care', 'Jl. Golf Barat Raya No. 22, Arcamanik, Kota Bandung', '9.00.00 AM', '081324600180')"
-# q7 = update klinik set namaKlinik = 'Klinik Hewan Momo' where IDKlinik = 15
 
-# select all in klinik
+#
+
 # conn.execute(q2)
 # conn.execute(q3)
 # conn.execute(q4)
