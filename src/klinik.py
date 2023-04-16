@@ -12,10 +12,10 @@ class klinikWindow(QDialog):
         super(klinikWindow, self).__init__()
         loadUi('src/BuilderUI/klinik.ui', self)
         self.satubtn = self.findChild(QPushButton, 'satu')
-        self.tableWidget.setColumnWidth(0, 500)
-        self.tableWidget.setColumnWidth(1, 600)
-        self.tableWidget.setColumnWidth(2, 250)
-        self.tableWidget.setColumnWidth(3, 200)
+        self.tableWidget.setColumnWidth(0, 400)
+        self.tableWidget.setColumnWidth(1, 500)
+        self.tableWidget.setColumnWidth(2, 200)
+        self.tableWidget.setColumnWidth(3, 150)
 
         self.load_data()
 

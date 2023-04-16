@@ -1,1 +1,0 @@
-conn.execute(q6)
