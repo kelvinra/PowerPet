@@ -25,12 +25,12 @@
   <property name="modal">
    <bool>false</bool>
   </property>
-  <widget class="QCommandLinkButton" name="commandLinkButton">
+  <widget class="QPushButton" name="indt">
    <property name="geometry">
     <rect>
-     <x>260</x>
+     <x>810</x>
      <y>190</y>
-     <width>221</width>
+     <width>151</width>
      <height>41</height>
     </rect>
    </property>
@@ -38,12 +38,12 @@
     <string>Informasi Detail</string>
    </property>
   </widget>
-  <widget class="QCommandLinkButton" name="commandLinkButton_2">
+  <widget class="QPushButton" name="mafa">
    <property name="geometry">
     <rect>
-     <x>510</x>
+     <x>1070</x>
      <y>190</y>
-     <width>251</width>
+     <width>181</width>
      <height>41</height>
     </rect>
    </property>
@@ -51,25 +51,12 @@
     <string>Makanan Favorit</string>
    </property>
   </widget>
-  <widget class="QCommandLinkButton" name="commandLinkButton_3">
+  <widget class="QPushButton" name="cake">
    <property name="geometry">
     <rect>
-     <x>1220</x>
+     <x>1340</x>
      <y>190</y>
-     <width>251</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Jadwal</string>
-   </property>
-  </widget>
-  <widget class="QCommandLinkButton" name="commandLinkButton_4">
-   <property name="geometry">
-    <rect>
-     <x>810</x>
-     <y>190</y>
-     <width>321</width>
+     <width>161</width>
      <height>41</height>
     </rect>
    </property>
@@ -80,88 +67,110 @@
   <widget class="QStackedWidget" name="stackedWidget">
    <property name="geometry">
     <rect>
-     <x>250</x>
+     <x>810</x>
      <y>240</y>
-     <width>221</width>
-     <height>111</height>
-    </rect>
-   </property>
-   <property name="currentIndex">
-    <number>1</number>
-   </property>
-   <widget class="QWidget" name="page_3">
-    <widget class="QLabel" name="label_2">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>30</y>
-       <width>35</width>
-       <height>10</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>enti</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="page_4">
-    <widget class="QLabel" name="label_6">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>20</y>
-       <width>35</width>
-       <height>10</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>mafura</string>
-     </property>
-    </widget>
-   </widget>
-  </widget>
-  <widget class="QStackedWidget" name="stackedWidget_2">
-   <property name="geometry">
-    <rect>
-     <x>520</x>
-     <y>249</y>
-     <width>120</width>
-     <height>91</height>
+     <width>691</width>
+     <height>521</height>
     </rect>
    </property>
    <property name="currentIndex">
     <number>0</number>
    </property>
-   <widget class="QWidget" name="page_5">
-    <widget class="QLabel" name="label_7">
+   <widget class="QWidget" name="page_7">
+    <widget class="QLabel" name="umur">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>35</width>
-       <height>10</height>
+       <x>60</x>
+       <y>200</y>
+       <width>111</width>
+       <height>51</height>
       </rect>
      </property>
      <property name="text">
-      <string>magen</string>
+      <string>Umur</string>
      </property>
     </widget>
-   </widget>
-   <widget class="QWidget" name="page_6">
-    <widget class="QLabel" name="label_8">
+    <widget class="QLabel" name="jkel">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>35</width>
-       <height>10</height>
+       <x>50</x>
+       <y>450</y>
+       <width>111</width>
+       <height>51</height>
       </rect>
      </property>
      <property name="text">
-      <string>saken</string>
+      <string>Jenis Kelamin</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="bday">
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>200</y>
+       <width>111</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Tangal Lahir</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="berat">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>450</y>
+       <width>111</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Berat</string>
      </property>
     </widget>
    </widget>
+   <widget class="QWidget" name="page_8">
+    <widget class="QLabel" name="lfood">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>50</y>
+       <width>111</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Daftar Makanan :</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="nama">
+   <property name="geometry">
+    <rect>
+     <x>560</x>
+     <y>610</y>
+     <width>111</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Nama</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="jenis">
+   <property name="geometry">
+    <rect>
+     <x>560</x>
+     <y>670</y>
+     <width>111</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Jenis</string>
+   </property>
   </widget>
  </widget>
  <resources>
