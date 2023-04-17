@@ -61,8 +61,7 @@ q5 = '''CREATE TABLE IF NOT EXISTS Klinik
 # conn.execute(q2)
 # conn.execute(q3)
 # conn.execute(q4)
-q7 = "UPDATE klinik SET alamat = 'Lingkungan Mendut 3 RT 3 RW 6, Magelang' WHERE IDKlinik = 12"
-conn.execute(q7)
+
 
 conn.commit()
 print ("Table created successfully");
