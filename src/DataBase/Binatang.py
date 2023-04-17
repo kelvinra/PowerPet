@@ -27,6 +27,22 @@ q5 = "INSERT INTO Hewan (ID,nama,jenis,umur,birthdate,berat,foto) \
 # conn.execute(q5)
 # conn.commit()
 
+j1 = '''CREATE TABLE IF NOT EXISTS Aktivitas
+         (ID_Aktivitas INTEGER PRIMARY KEY AUTOINCREMENT,
+         ID_Hewan INTEGER NOT NULL,
+         nama_aktivitas TEXT NOT NULL,
+         tanggal TEXT NOT NULL,
+         prioritas INTEGER NOT NULL,
+         FOREIGN KEY (ID_Hewan) REFERENCES Hewan(ID));'''
+conn.execute(j1)
+
+j3 = "INSERT INTO Aktivitas (ID_Hewan,nama_aktivitas,tanggal,prioritas) \
+        VALUES (1, 'Makan', '2023-01-02', 1)"
+j4 = "INSERT INTO Aktivitas (ID_Hewan,nama_aktivitas,tanggal,prioritas) \
+        VALUES (1, 'Mandi', '2023-01-03', 2)"
+# conn.execute(j2)
+conn.execute(j3)
+conn.execute(j4)
 print ("Table created successfully");
 
 conn.close()
