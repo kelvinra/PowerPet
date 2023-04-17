@@ -62,7 +62,7 @@ class TampilJadwal(QDialog):
         data = self.load_data()
         highlighted_dates = [row[3] for row in data]
         format = QTextCharFormat()
-        brush = QBrush(QColor("#aaffff")) # set the color of the background
+        brush = QBrush(QColor("#FD7F63")) # set the color of the background
         format.setBackground(brush)
         format.setFontWeight(QFont.Bold) # set the font weight to bold
         calendar = self.findChild(QtWidgets.QCalendarWidget, "calendarWidget")
@@ -90,9 +90,9 @@ class TampilJadwal(QDialog):
         # set min max card size
         card.setMinimumSize(493, 86)
         card.setMaximumSize(493, 86)
-        card.setStyleSheet("background-color: #aaffff; border-radius: 20px;")
+        card.setStyleSheet("background-color: #FD7F63; border-radius: 20px;")
         card.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
-        
+
         # add shadow to the card
         shadow = QtWidgets.QGraphicsDropShadowEffect()
         shadow.setBlurRadius(4)
@@ -113,18 +113,19 @@ class TampilJadwal(QDialog):
 
         day = tanggal.split("-")[2]
         day_label = QtWidgets.QLabel(day)
-        day_label.setStyleSheet("font-size: 32px; font-weight: bold;")
+        day_label.setStyleSheet("font-size: 32px; font-family: Inter; font-weight: bold; color: white;")
         day_label.setWordWrap(True)
         day_label.setAlignment(QtCore.Qt.AlignCenter)
 
+
         day_of_week = datetime.datetime.strptime(tanggal, "%Y-%m-%d").strftime("%A")
         day_of_week_label = QtWidgets.QLabel(day_of_week)
-        day_of_week_label.setStyleSheet("font-size: 16px;")
+        day_of_week_label.setStyleSheet("font-size: 16px; font-family: Inter; color: white;")
         day_of_week_label.setWordWrap(True)
         day_of_week_label.setAlignment(QtCore.Qt.AlignCenter)
 
         nama_kegiatan_label = QtWidgets.QLabel(nama_kegiatan)
-        nama_kegiatan_label.setStyleSheet("font-size: 16px; font-family: Inter;")
+        nama_kegiatan_label.setStyleSheet("font-size: 16px; font-family: Inter; color: white;")
         nama_kegiatan_label.setWordWrap(True)
 
         layout_left.addWidget(day_label, 5)
