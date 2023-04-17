@@ -6,7 +6,7 @@ from PyQt5.QtCore import *
 import MainWindow as mw
 import MenuWindow as mw2
 import Add as a
-import JadwalWindow as jw
+import InputJadwal as ij
 
 
 
@@ -17,7 +17,7 @@ class app(QApplication):
         self.window = mw.MainWindow()
         self.menu = mw2.MenuWindow()
         self.add = a.AddWindow()
-        self.jadwal = jw.JadwalWindow()
+        self.jadwal = ij.InputJadwal(ID_Hewan = 1)
         self.widget = QtWidgets.QStackedWidget()
         # self.widget.addWidget(self.window)
         # self.widget.addWidget(self.menu)

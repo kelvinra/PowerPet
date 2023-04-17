@@ -27,6 +27,16 @@ q5 = "INSERT INTO Hewan (ID,nama,jenis,umur,birthdate,berat,foto) \
 # conn.execute(q5)
 # conn.commit()
 
+j1 = '''CREATE TABLE IF NOT EXISTS Aktivitas
+         (ID_Aktivitas INTEGER PRIMARY KEY AUTOINCREMENT,
+         ID_Hewan INTEGER NOT NULL,
+         nama_aktivitas TEXT NOT NULL,
+         tanggal TEXT NOT NULL,
+         prioritas INTEGER NOT NULL,
+         FOREIGN KEY (ID_Hewan) REFERENCES Hewan(ID));'''
+conn.execute(j1)
+j2 = "DROP TABLE Aktivitas"
+# conn.execute(j2)
 print ("Table created successfully");
 
 conn.close()
