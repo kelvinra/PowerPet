@@ -6,10 +6,8 @@ from PyQt5.QtCore import *
 import MainWindow as mw
 import MenuWindow as mw2
 import Add as a
-import klinik as kh
+import klinik as k
         
-
-
 
 
 class app(QApplication):
@@ -18,8 +16,8 @@ class app(QApplication):
         self.window = mw.MainWindow()
         self.menu = mw2.MenuWindow()
         self.add = a.AddWindow()
+        self.klinik = k.klinikWindow()
         self.widget = QtWidgets.QStackedWidget()
-        self.klinik = kh.klinikWindow()
         self.widget.addWidget(self.window)
         self.widget.addWidget(self.menu)
         self.widget.addWidget(self.add)
@@ -32,6 +30,7 @@ class app(QApplication):
         self.add.submitbtn.clicked.connect(lambda: self.widget.setCurrentIndex(1))
         self.add.backHome.clicked.connect(lambda: self.widget.setCurrentIndex(1))
         self.menu.pushButton.clicked.connect(lambda: self.widget.setCurrentIndex(3))
+        
     
 
 

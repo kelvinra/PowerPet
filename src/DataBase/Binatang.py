@@ -62,7 +62,18 @@ q5 = '''CREATE TABLE IF NOT EXISTS Klinik
 # conn.execute(q3)
 # conn.execute(q4)
 
+q10 = '''CREATE TABLE IF NOT EXISTS Makanan
+        (ID INT                      NOT NULL,
+        jenisMakanan           TEXT    NOT NULL,
+        namaMakanan           TEXT    NOT NULL);'''
 
-conn.commit()
+q11 = '''CREATE TABLE IF NOT EXISTS Kesehatan
+        (ID INT                      NOT NULL,
+        CatatanKesehatan           TEXT    NOT NULL,
+        periode           TEXT    NOT NULL,
+        tanggalPeriksa           TEXT    NOT NULL);'''
+
+conn.execute(q11)
+# conn.commit()
 print ("Table created successfully");
 conn.close()

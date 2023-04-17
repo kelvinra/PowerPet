@@ -24,7 +24,7 @@ class AddWindow(QDialog):
         self.submitbtn.setGeometry(1600, 800, 150, 41)
         self.submitbtn.setParent(self)
         self.submitbtn.setText(">")
-        self.submitbtn.clicked.connect(self.submit)
+        self.submitbtn.clicked.connect(self.submitData)
         self.fotobtn.clicked.connect(self.fotoDialog)
         self.stackedWidget.setCurrentIndex(0)
         self.fileName = ""
@@ -39,17 +39,20 @@ class AddWindow(QDialog):
         self.inputBerat = self.findChild(QLineEdit, 'inputBerat')
         self.inputBirth = self.findChild(QLineEdit, 'inputBirth')
         self.inputGender = self.findChild(QLineEdit, 'inputGender')
+        self.inputJenisMakanan = self.findChild(QLineEdit, 'inputJenisMakanan')
+        self.inputNamaMakanan = self.findChild(QLineEdit, 'inputNamaMakanan')
+        self.inputKesehatan = self.findChild(QLineEdit, 'inputKesehatan')
+        self.inputPeriode = self.findChild(QLineEdit, 'inputPeriode')
+        self.inputTanggalKesehatan = self.findChild(QLineEdit, 'inputTanggalKesehatan')
         
         self.namaHewan = self.inputHewan.text()
         self.namaJenis = self.inputJenis.text()
-    def submit(self):
-        self.saveData()
 
     def showEvent(self, event):
         self.inputHewan.setText("")
         self.inputJenis.setText("")
     
-    def saveData (self):
+    def saveDataHewan (self):
         self.con = mdb.connect('src/DataBase/Hewan.db')
         self.cur = self.con.cursor()
         self.cur.execute("SELECT count(ID) FROM Hewan")
@@ -57,7 +60,35 @@ class AddWindow(QDialog):
         id = rows[0][0]+1
         q1 = "INSERT INTO Hewan (ID,nama,jenis,umur,birthdate,berat,foto) VALUES (" + str(id) + ", '" + self.inputHewan.text() + "', '" + self.inputJenis.text() + "', " + self.inputUmur.text() + ", '" + self.inputBirth.text() + "', " + self.inputBerat.text() + ", '" + self.fileName + "')"
         self.con.execute(q1)
-        self.con.commit()
+        # self.con.commit()
+        self.con.close()
+
+    def saveDataMakanan (self):
+        self.con = mdb.connect('src/DataBase/Hewan.db')
+        self.cur = self.con.cursor()
+        self.cur.execute("SELECT count(ID) FROM Hewan")
+        rows = self.cur.fetchall()
+        id = rows[0][0]+1
+        q1 = "INSERT INTO Makanan (ID,jenisMakanan,namaMakanan) VALUES (" + str(id) + ", '" + self.inputJenisMakanan.text() + "', '" + self.inputNamaMakanan.text() + "')"
+        self.con.execute(q1)
+        # self.con.commit()
+        self.con.close()
+
+    def saveDataKesehatan (self):
+        self.con = mdb.connect('src/DataBase/Hewan.db')
+        self.cur = self.con.cursor()
+        self.cur.execute("SELECT count(ID) FROM Hewan")
+        rows = self.cur.fetchall()
+        id = rows[0][0]+1
+        q1 = "INSERT INTO Kesehatan (ID,catatanKesehatan,periode,tanggalPeriksa) VALUES (" + str(id) + ", '" + self.inputKesehatan.text() + "', '" + self.inputPeriode.text() + "', '" + self.inputTanggalKesehatan.text() + "')"
+        self.con.execute(q1)
+        # self.con.commit()
+        self.con.close()
+    
+    def submitData(self):
+        self.saveDataHewan()
+        self.saveDataMakanan()
+        self.saveDataKesehatan()
 
     def fotoDialog(self):
         options = QFileDialog.Options()
