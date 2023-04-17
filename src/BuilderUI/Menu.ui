@@ -55,7 +55,7 @@ text-decoration: underline;
     <string>Klinik</string>
    </property>
   </widget>
-  <widget class="QFrame" name="frame">
+  <widget class="QFrame" name="sidebar">
    <property name="geometry">
     <rect>
      <x>898</x>
@@ -64,18 +64,24 @@ text-decoration: underline;
      <height>51</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>91</width>
+     <height>51</height>
+    </size>
+   </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>
    </property>
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="filter">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>10</x>
       <y>0</y>
-      <width>91</width>
+      <width>81</width>
       <height>41</height>
      </rect>
     </property>
@@ -101,7 +107,7 @@ text-decoration: underline;
      <string>Filter</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="filterj">
     <property name="geometry">
      <rect>
       <x>100</x>
@@ -120,7 +126,7 @@ text-decoration: underline;
      <string>jenis</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="filterm">
     <property name="geometry">
      <rect>
       <x>280</x>
@@ -139,7 +145,7 @@ text-decoration: underline;
      <string>makanan</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="inputj">
     <property name="geometry">
      <rect>
       <x>160</x>
@@ -156,7 +162,7 @@ text-decoration: underline;
      <string> (kucing, anjing)</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
+   <widget class="QLineEdit" name="inputm">
     <property name="geometry">
      <rect>
       <x>350</x>
@@ -172,7 +178,7 @@ text-decoration: underline;
      <string>(whiskas)</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="search">
     <property name="geometry">
      <rect>
       <x>470</x>
@@ -180,6 +186,18 @@ text-decoration: underline;
       <width>93</width>
       <height>28</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+background-color: rgb(243, 103, 72, 1);
+border-radius: 20px;
+border: 0;
+color: rgb(255, 255, 255);
+}
+
+QPushButton:pressed{
+background-color: rgb(243, 103, 72, 0.6);
+}</string>
     </property>
     <property name="text">
      <string>search</string>

@@ -73,7 +73,10 @@ q11 = '''CREATE TABLE IF NOT EXISTS Kesehatan
         periode           TEXT    NOT NULL,
         tanggalPeriksa           TEXT    NOT NULL);'''
 
-conn.execute(q11)
-# conn.commit()
+q12 = "INSERT INTO Makanan (ID,jenisMakanan,namaMakanan) \
+        VALUES \
+        (2, 'Pro Plan', 'Essentials Chicken')"
+conn.execute(q12)
+conn.commit()
 print ("Table created successfully");
 conn.close()

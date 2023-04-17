@@ -25,11 +25,14 @@ class MenuWindow(QDialog):
         self.Add = btn.AddHButton()
         self.Add.setGeometry(1600,80,150,41)
         self.Add.setParent(self)
+        self.filter.clicked.connect(self.sidebaranimate)
+        self.search.clicked.connect(self.filterHewan)
         # QtCore.QTimer.singleShot(100, self.slideright)
         self.poscarosel = 0
         self.jumlahHewan = 0
         self.carouselwidth = 1920
         self.carousel = QFrame(self)
+        self.sidebarcounter = 0
         
 
         # set the QStackedLayout as the layout for the carousel widget
@@ -70,6 +73,37 @@ class MenuWindow(QDialog):
     #     self.animation.setEndValue(QPoint(pos,0))
     #     self.animation.setDuration(1000)
 
+    def sidebaranimate(self):
+        if self.sidebarcounter == 0:
+            self.animation = QPropertyAnimation(self.sidebar, b"minimumWidth")
+            self.animation.setEasingCurve(QEasingCurve.InOutCubic)
+            self.animation.setStartValue(91)
+            self.animation.setEndValue(581)
+            self.animation.setDuration(500)
+            self.animation.start()
+            self.animation1 = QPropertyAnimation(self.sidebar, b"maximumWidth")
+            self.animation1.setEasingCurve(QEasingCurve.InOutCubic)
+            self.animation1.setStartValue(91)
+            self.animation1.setEndValue(581)
+            self.animation1.setDuration(500)
+            self.animation1.start()
+            self.sidebarcounter = 1
+        else:
+            self.animation = QPropertyAnimation(self.sidebar, b"minimumWidth")
+            self.animation.setEasingCurve(QEasingCurve.InOutCubic)
+            self.animation.setStartValue(self.sidebar.width())
+            self.animation.setEndValue(91)
+            self.animation.setDuration(500)
+            self.animation.start()
+            self.animation1 = QPropertyAnimation(self.sidebar, b"maximumWidth")
+            self.animation1.setEasingCurve(QEasingCurve.InOutCubic)
+            self.animation1.setStartValue(self.sidebar.width())
+            self.animation1.setEndValue(91)
+            self.animation1.setDuration(500)
+            self.animation1.start()
+            self.sidebarcounter = 0
+        
+
     def createCard(self):
         self.con = mdb.connect('src\DataBase\Hewan.db')
         # self.con.execute("INSERT INTO Hewan (ID,nama,jenis,umur,birthdate,berat,foto) VALUES (2, 'Anjing', 'Mamalia', 3, '2018-01-02', 10, 'D:\Downloads\image 4.png')")
@@ -78,6 +112,7 @@ class MenuWindow(QDialog):
         rows = self.cur.fetchall()
         i = 1
         self.frames = []
+        self.buttons = []
         for row in rows:
         # set the geometry of the frame
             self.frame = QFrame(self.carousel)
@@ -126,6 +161,7 @@ class MenuWindow(QDialog):
             self.namebtn = "detail" + str(i)
             self.detail.setGeometry(QRect(139, 490, 180, 60))
             self.detail.setObjectName(self.namebtn)
+            self.buttons.append(self.detail)
             # self.detail.setStyleSheet("backgroun")
             
             # add the frame to the carousel layout
@@ -137,8 +173,7 @@ class MenuWindow(QDialog):
             self.carousel.setGeometry(QRect(0, 200, self.carouselwidth, 631))
             self.carousel.setLayout(self.carouselLayout)
             i += 1
-        for child in self.carousel.children():
-            print(child.objectName())
+        
         self.frame1 = self.findChild(QFrame, "frame1")
         self.frame2 = self.findChild(QFrame, "frame2")
         self.frame3 = self.findChild(QFrame, "frame3")
@@ -188,14 +223,47 @@ class MenuWindow(QDialog):
         self.group_animation.start()
         self.con.close()
 
-    def detail(self):
-        print("Kontol")
-    def tambahHewan(self):
-        self.hewan = h.Hewan(1, "Kucing", "Kucing", "Daging", 1, "1/1/2019", "Jantan", 10)
-        print(self.jumlahHewan)
-        self.jumlahHewan += 1
-        self.createCard()
-        print(self.carousel.layout().count())
+    
+
+    def filterHewan(self):
+        self.con = mdb.connect('src\DataBase\Hewan.db')
+        # self.con.execute("INSERT INTO Hewan (ID,nama,jenis,umur,birthdate,berat,foto) VALUES (2, 'Anjing', 'Mamalia', 3, '2018-01-02', 10, 'D:\Downloads\image 4.png')")
+        self.cur = self.con.cursor()
+        rows = self.cur.fetchall()
+        if len(self.inputj.text()) != 0:
+            if len(self.inputm.text()) != 0:
+                self.cur.execute("SELECT ID FROM Hewan natural join Makanan WHERE jenis ='" + self.inputj.text()+ "' AND jenisMakanan ='" + self.inputm.text()+ "'")
+                rows = self.cur.fetchall()
+        
+                for row in rows:
+                    for i in range (0, len(self.frames)):
+                        if row[0] == i+1:
+                            self.frames[i].show()
+                        else:
+                            self.frames[i].hide()
+            else:
+                self.cur.execute("SELECT ID FROM Hewan WHERE jenis ='" + self.inputj.text()+ "'")
+                rows = self.cur.fetchall()
+        
+                for row in rows:
+                    for i in range (0, len(self.frames)):
+                        if row[0] == i+1:
+                            self.frames[i].show()
+                        else:
+                            self.frames[i].hide()
+        elif len(self.inputm.text()) != 0:
+            self.cur.execute("SELECT ID FROM Makanan WHERE jenisMakanan ='" + self.inputm.text()+ "'")
+            rows = self.cur.fetchall()
+            for row in rows:
+                for i in range (0, len(self.frames)):
+                    if row[0] == i+1:
+                        self.frames[i].show()
+                    else:
+                        self.frames[i].hide()
+        else :
+            for i in range (0, len(self.frames)):
+                self.frames[i].show()
+
 
     def DBConnect(self):
         self.con = mdb.connect('src\DataBase\Hewan.db')
