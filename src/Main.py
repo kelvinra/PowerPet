@@ -16,8 +16,8 @@ class app(QApplication):
         self.window = mw.MainWindow()
         self.menu = mw2.MenuWindow()
         self.info = info.InfoWindow()
-        # self.add = a.AddWindow()
         self.widget = QtWidgets.QStackedWidget()
+    
         # self.widget.addWidget(self.window)
         # self.widget.addWidget(self.menu)
         # self.widget.addWidget(self.add)

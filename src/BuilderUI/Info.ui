@@ -175,7 +175,7 @@ background-repeat: none;
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="page">
     <widget class="QFrame" name="frame1">
@@ -188,13 +188,21 @@ background-repeat: none;
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">color:rgb(255, 172, 247)</string>
+      <string notr="true">#frame1 {background-color: #FFFFFF; opacity:1.0; border-radius: 20px; border: 2px solid rgba(0, 0, 0, 0.05);
+}
+</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
      <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="lineWidth">
+      <number>200</number>
+     </property>
+     <property name="midLineWidth">
+      <number>20</number>
      </property>
      <widget class="QLabel" name="umur">
       <property name="geometry">
@@ -209,6 +217,9 @@ background-repeat: none;
        <font>
         <pointsize>48</pointsize>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
       </property>
       <property name="text">
        <string>umur</string>
@@ -237,6 +248,10 @@ background-repeat: none;
        <height>203</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">#frame3 {background-color: #FFFFFF; opacity:1.0; border-radius: 20px; border: 2px solid rgba(0, 0, 0, 0.05);
+}</string>
+     </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
@@ -258,7 +273,7 @@ background-repeat: none;
        </font>
       </property>
       <property name="text">
-       <string>umur</string>
+       <string>gender</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_3">
@@ -271,7 +286,7 @@ background-repeat: none;
        </rect>
       </property>
       <property name="text">
-       <string>Umur</string>
+       <string>Jenis Kelamin</string>
       </property>
      </widget>
     </widget>
@@ -284,6 +299,10 @@ background-repeat: none;
        <height>203</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">#frame2{background-color: #FFFFFF; opacity:1.0; border-radius: 20px; border: 2px solid rgba(0, 0, 0, 0.05);
+}</string>
+     </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
@@ -294,7 +313,7 @@ background-repeat: none;
       <property name="geometry">
        <rect>
         <x>60</x>
-        <y>30</y>
+        <y>50</y>
         <width>221</width>
         <height>91</height>
        </rect>
@@ -318,7 +337,7 @@ background-repeat: none;
        </rect>
       </property>
       <property name="text">
-       <string>Umur</string>
+       <string>Tanggal Lahir</string>
       </property>
      </widget>
     </widget>
@@ -330,6 +349,11 @@ background-repeat: none;
        <width>341</width>
        <height>203</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#frame4
+ {background-color: #FFFFFF; opacity:1.0; border-radius: 20px; border: 2px solid rgba(0, 0, 0, 0.05);
+}</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -352,7 +376,7 @@ background-repeat: none;
        </font>
       </property>
       <property name="text">
-       <string>umur</string>
+       <string>berat</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_4">
@@ -365,9 +389,48 @@ background-repeat: none;
        </rect>
       </property>
       <property name="text">
-       <string>Umur</string>
+       <string>Berat</string>
       </property>
      </widget>
+    </widget>
+    <widget class="QPushButton" name="addButton">
+     <property name="geometry">
+      <rect>
+       <x>820</x>
+       <y>480</y>
+       <width>56</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>true</bool>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset theme="edit.png"/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="editButton">
+     <property name="geometry">
+      <rect>
+       <x>750</x>
+       <y>480</y>
+       <width>56</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>true</bool>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset theme="edit.png">
+       <normaloff>.</normaloff>.</iconset>
+     </property>
     </widget>
    </widget>
    <widget class="QWidget" name="page_2">
@@ -379,6 +442,11 @@ background-repeat: none;
        <width>671</width>
        <height>251</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#frame5
+ {background-color: #FFFFFF; opacity:1.0; border-radius: 20px; border: 2px solid rgba(0, 0, 0, 0.05);
+}</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -423,9 +491,49 @@ background-repeat: none;
       </property>
      </widget>
     </widget>
+    <widget class="QPushButton" name="editButton2">
+     <property name="geometry">
+      <rect>
+       <x>750</x>
+       <y>480</y>
+       <width>56</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>true</bool>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset theme="edit.png">
+       <normaloff>.</normaloff>.</iconset>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="addButton2">
+     <property name="geometry">
+      <rect>
+       <x>820</x>
+       <y>480</y>
+       <width>56</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>true</bool>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset theme="edit.png">
+       <normaloff>.</normaloff>.</iconset>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="page_3">
-    <widget class="QFrame" name="frame5_2">
+    <widget class="QFrame" name="frame6">
      <property name="geometry">
       <rect>
        <x>110</x>
@@ -433,6 +541,11 @@ background-repeat: none;
        <width>671</width>
        <height>251</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#frame6
+{background-color: #FFFFFF; opacity:1.0; border-radius: 20px; border: 2px solid rgba(0, 0, 0, 0.05);
+}</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -477,11 +590,52 @@ background-repeat: none;
       </property>
      </widget>
     </widget>
+    <widget class="QPushButton" name="addButton3">
+     <property name="geometry">
+      <rect>
+       <x>820</x>
+       <y>480</y>
+       <width>56</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>true</bool>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset theme="edit.png">
+       <normaloff>.</normaloff>.</iconset>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="editButton3">
+     <property name="geometry">
+      <rect>
+       <x>750</x>
+       <y>480</y>
+       <width>56</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>true</bool>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset theme="edit.png">
+       <normaloff>.</normaloff>.</iconset>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>
  <resources>
   <include location="../Assets/resource.qrc"/>
+  <include location="../Assets/edit.qrc"/>
  </resources>
  <connections/>
 </ui>
