@@ -33,14 +33,20 @@ class app(QApplication):
         #buttons function
         self.window.Logo.clicked.connect(lambda: self.widget.setCurrentIndex(1))
         self.menu.Add.clicked.connect(lambda: self.widget.setCurrentIndex(2))
-        self.add.submitbtn.clicked.connect(lambda: self.widget.setCurrentIndex(1))
-        self.add.backHome.clicked.connect(lambda: self.widget.setCurrentIndex(1))
+        self.add.submitbtn.clicked.connect(lambda: self.backHome())
+        self.add.backHome.clicked.connect(lambda: self.backHome())
+        self.klinik.backHome.clicked.connect(lambda: self.backHome())
         self.menu.pushButton.clicked.connect(lambda: self.widget.setCurrentIndex(3))
         for i in range (0, len(self.menu.buttons)):
             self.menu.buttons[i].clicked.connect(partial(self.showDetail, i))
+        # self.menu.button1.clicked.connect(lambda: self.showDetail(1))
         
-        
+    def backHome(self):
+        self.widget.setCurrentIndex(1)
+        self.menu.resetPage()
+    
     def showDetail(self, i):
+        print("kontol")
         self.widget.setCurrentIndex(4)
         self.info.showData(i+1)
 
