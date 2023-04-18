@@ -29,6 +29,7 @@ class app(QApplication):
         self.menu.Add.clicked.connect(lambda: self.widget.setCurrentIndex(2))
         self.add.submitbtn.clicked.connect(lambda: self.widget.setCurrentIndex(1))
         self.add.backHome.clicked.connect(lambda: self.widget.setCurrentIndex(1))
+        self.klinik.backHome.clicked.connect(lambda: self.widget.setCurrentIndex(1))
         self.menu.pushButton.clicked.connect(lambda: self.widget.setCurrentIndex(3))
         
     

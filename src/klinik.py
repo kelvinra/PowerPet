@@ -19,6 +19,7 @@ class klinikWindow(QDialog):
         self.load_data()
         self.max_table_height = self.tableWidget.height() # simpan tinggi maksimum sebelum pencarian
         searchBar = self.findChild(QLineEdit, 'searchBar_2')
+        self.backHome.clicked.connect(lambda: self.close())
         searchBar.textChanged.connect(lambda: self.search_data(searchBar.text().lower()))
 
     def load_data(self):

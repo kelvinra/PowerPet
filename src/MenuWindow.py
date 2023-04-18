@@ -1,4 +1,5 @@
 import sys
+from PyQt5 import sip
 from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
@@ -33,18 +34,37 @@ class MenuWindow(QDialog):
         self.carouselwidth = 1920
         self.carousel = QFrame(self)
         self.sidebarcounter = 0
+        self.frames = []
+        self.buttons = []
         
 
         # set the QStackedLayout as the layout for the carousel widget
+    def populateFrame(self):
+        self.deleteLayout(self.frame.layout())
+        layout = QtGui.QVBoxLayout(self.frame)
+        ...
+
+    def deleteLayout(self, layout):
+        if layout is not None:
+            while layout.count():
+                item = layout.takeAt(0)
+                widget = item.widget()
+                if widget is not None:
+                    widget.deleteLater()
+                else:
+                    self.deleteLayout(item.layout())
+            sip.delete(layout)
         
     def showEvent(self, event):
-
+        self.deleteLayout(self.carousel.layout())
         self.carousel.setGeometry(QRect(0, self.poscarosel, 1920, 631))
         self.carouselLayout = QHBoxLayout(self.carousel)
         self.carouselLayout.setSpacing(15)
         self.carouselLayout.setContentsMargins(0, 0, 0, 0)
         self.carouselLayout.setObjectName("carouselLayout")
         self.carousel.setLayout(self.carouselLayout)
+        self.frames.clear()
+        self.buttons.clear()
         self.createCard()
 
     def slideleft(self):
@@ -231,6 +251,7 @@ class MenuWindow(QDialog):
         self.cur = self.con.cursor()
         rows = self.cur.fetchall()
         if len(self.inputj.text()) != 0:
+            print("masuk")
             if len(self.inputm.text()) != 0:
                 self.cur.execute("SELECT ID FROM Hewan natural join Makanan WHERE jenis ='" + self.inputj.text()+ "' AND jenisMakanan ='" + self.inputm.text()+ "'")
                 rows = self.cur.fetchall()
