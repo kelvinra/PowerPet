@@ -17,7 +17,7 @@ class app(QApplication):
         self.menu = mw2.MenuWindow()
         self.info = info.InfoWindow()
         self.widget = QtWidgets.QStackedWidget()
-    
+        
         # self.widget.addWidget(self.window)
         # self.widget.addWidget(self.menu)
         # self.widget.addWidget(self.add)
@@ -30,7 +30,7 @@ class app(QApplication):
         # self.add.submitbtn.clicked.connect(lambda: self.widget.setCurrentIndex(1))
         # self.add.backHome.clicked.connect(lambda: self.widget.setCurrentIndex(1))
     
-
+    
 
 
 run = app(sys.argv)

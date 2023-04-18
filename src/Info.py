@@ -5,8 +5,7 @@ from PyQt5.QtCore import *
 import sqlite3 as mdb
 import Hewan as h
 import Button as btn
-
-
+import Add 
 
 
 class InfoWindow(QDialog):
@@ -15,8 +14,7 @@ class InfoWindow(QDialog):
         loadUi('src/BuilderUI/Info.ui', self)
         self.stackedWidget.setCurrentIndex(0)
         
-
-        # Menghubungkan tombol
+        
         self.indtbtn = self.findChild(QPushButton, 'info')
         self.mafabtn = self.findChild(QPushButton, 'makanan')
         self.cakebtn = self.findChild(QPushButton, 'kesehatan')
@@ -26,6 +24,18 @@ class InfoWindow(QDialog):
         self.addbtn = self.findChild(QPushButton,'addButton')
         self.addbtn2 = self.findChild(QPushButton,'addButton2')
         self.addbtn3= self.findChild(QPushButton,'addButton3')
+        
+        
+        
+        
+        
+        
+        # self.foodNameLbl = self.findChild(QLabel, 'namaMakanan')
+        # self.foodDescLbl = self.findChild(QLabel, 'jenisMakanan')
+        # self.infoKesLbl = self.findChild(QLabel, 'infoKes')
+        # self.descKesLbl = self.findChild(QLabel, 'descKes')
+        
+        #set ikon tombol 
 
         self.pixmap = QtGui.QPixmap('src/Assets/edit.png')
         self.editbtn.setIcon(QtGui.QIcon(self.pixmap))
@@ -45,36 +55,91 @@ class InfoWindow(QDialog):
         self.pixmap = QtGui.QPixmap('src/Assets/add.png')
         self.addbtn3.setIcon(QtGui.QIcon(self.pixmap))
 
+        # self.editDetailInfo = self.findChild(QWidget, Add.AddWindow().__init__().stackedWidget.setCurrentIndex(0))
         self.indtbtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
         self.mafabtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
         self.cakebtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
+        # self.editbtn.clicked.connect(lambda: self.editDetailInfo)
 
 
-        def showDet(self, id):
-        
-            conn = mdb.connect('src/DataBase/Hewan.db')
-            cur = conn.cursor()
+        def showData (self, ID) :
+            self.con = mdb.connect('src/DataBase/Hewan.db')
+            self.cur = self.con.cursor()
+            self.fotoLbl = self.findChild(QLabel, 'fotoHewan')
+            self.namaLbl = self.findChild(QLabel, 'nama')
+            self.jenisLbl = self.findChild(QLabel, 'jenisHewan')
+            self.umurLbl = self.findChild(QLabel, 'umur')
+            self.birthLbl = self.findChild(QLabel, 'lahir')
+            # self.genderLbl = self.findChild(QLabel, 'gender')
+            self.beratLbl = self.findChild(QLabel, 'berat')
+            # self.cur.execute("SELECT nama,jenis,umur,birthdate,berat,foto FROM Hewan WHERE ID =?", (ID,))
+            self.cur.execute("SELECT foto FROM Hewan WHERE ID =?", (ID,))
+            foto = self.cur.fetchone()[0]
+            fotoByte = bytes(foto, encoding='utf-8')
+            fotoHwn = QtGui.QPixmap()
+            fotoHwn.loadFromData(fotoByte)
+            self.fotoLbl.setPixmap(fotoHwn)
+            self.fotoLbl.setScaledContents(True)
+            self.fotoLbl.show()
+
+            self.cur.execute("SELECT nama FROM Hewan WHERE ID =?", (ID,))
+            nama = self.cur.fetchone()[0]
+            self.namaLbl.setText(nama)
+            self.namaLbl.show()
             
-            cur.execute("SELECT umur FROM Hewan WHERE id=?", (id,))
-            umur = cur.fetchone()[0]
-            self.umur.setText(str(umur))
-           
+            self.cur.execute("SELECT jenis FROM Hewan WHERE ID =?", (ID,))
+            jenis = self.cur.fetchone()[0]
+            self.jenisLbl.setText(jenis)
+            self.jenisLbl.show()
 
-            # Menampilkan data lahir
-            cur.execute("SELECT birthdate FROM Hewan WHERE id=?", (id,))
-            lahir = cur.fetchone()[0]
-            self.lahir.setText(str(lahir))
+            self.cur.execute("SELECT umur FROM Hewan WHERE ID =?", (ID,))
+            umur = self.cur.fetchone()[0]
+            self.umurLbl.setText(str(umur))
+            self.umurLbl.show()
+
+            self.cur.execute("SELECT birthdate FROM Hewan WHERE ID =?", (ID,))
+            bday = self.cur.fetchone()[0]
+            self.birthLbl.setText(bday)
+            self.birthLbl.show()
+
+            self.cur.execute("SELECT berat FROM Hewan WHERE ID =?", (ID,))
+            berat = self.cur.fetchone()[0]
+            self.beratLbl.setText(str(berat))
+            self.beratLbl.show()
 
 
-            # Menampilkan data gender
-            cur.execute("SELECT jenis FROM Hewan WHERE id=?", (id,))
-            gender = cur.fetchone()[0]
-            self.gender.setText(str(gender))
+            self.con.close()
 
-            # Menampilkan data berat
-            cur.execute("SELECT berat FROM Hewan WHERE id=?", (id,))
-            berat = cur.fetchone()[0]
-            self.berat.setText(str(berat))
+        showData(self, 3)
+            
+        # def showFoto(self, ID):
+        #     self.fotoLbl = self.findChild(QLabel, 'fotoHewan')
+        #     self.con = mdb.connect('src/DataBase/Hewan.db')
+        #     self.cur = self.con.cursor()
+        #     self.cur.execute("SELECT foto FROM Hewan WHERE ID =?", (ID,))
+        #     foto = self.cur.fetchone()[0]
+        #     fotoByte = bytes(foto, encoding='utf-8')
+        #     fotoHwn = QtGui.QPixmap()
+        #     fotoHwn.loadFromData(fotoByte)
+
+        #     self.fotoLbl.setPixmap(fotoHwn)
+        #     self.fotoLbl.setScaledContents(True)
+        #     self.fotoLbl.show()
+        #     self.con.close()
+
+        # def showNama(self, ID):
+        #     self.namaLbl = self.findChild(QLabel, 'nama')
+        #     self.con = mdb.connect('src/DataBase/Hewan.db')
+        #     self.cur = self.con.cursor()
+        #     self.cur.execute("SELECT nama FROM Hewan WHERE ID =?", (ID,))
+        #     nama = self.cur.fetchone()[0]
+        #     self.namaLbl.setText(nama)
+        #     self.namaLbl.show()
+        #     self.con.close()
+            
+       
+        
+
         
         # def createCard(self):
         #     self.con = mdb.connect('src\DataBase\Hewan.db')
@@ -86,12 +151,12 @@ class InfoWindow(QDialog):
         #     self.frames = []
         #     for row in rows:
         #     # set the geometry of the frame
-        #         self.frame = QFrame(self.carousel)
+        #         self.frame = QLabel(self.carousel)
         #         x = (self.jumlahHewan - 1) * 480
         #         self.frame.setGeometry(QRect(x, 0, 460, 601))
         #         self.frame.setMaximumSize(460, 601)  # set the maximum size of the frame[count]
         #         self.frame.setMinimumSize(460, 601)  # set the minimum size of the frame[count]
-        #         self.frame.setFrameShape(QFrame.StyledPanel)  # set a shape for the frame
+        #         self.frame.setFrameShape(QLabel.StyledPanel)  # set a shape for the frame
         #         self.frame.setStyleSheet("background-color: #FFFFFF; opacity:1.0; border-radius: 20px; border: 2px solid rgba(0, 0, 0, 0.05);")
         #         # creating a QGraphicsDropShadowEffect object
         #         self.frames.append(self.frame)
@@ -145,17 +210,17 @@ class InfoWindow(QDialog):
         #         i += 1
         #     for child in self.carousel.children():
         #         print(child.objectName())
-        #     self.frame1 = self.findChild(QFrame, "frame1")
-        #     self.frame2 = self.findChild(QFrame, "frame2")
-        #     self.frame3 = self.findChild(QFrame, "frame3")
-        #     self.frame4 = self.findChild(QFrame, "frame4")
-        #     self.frame5 = self.findChild(QFrame, "frame5")
-        #     self.frame6 = self.findChild(QFrame, "frame6")
-        #     self.frame7 = self.findChild(QFrame, "frame7")
-        #     self.frame8 = self.findChild(QFrame, "frame8")
-        #     self.frame9 = self.findChild(QFrame, "frame9")
-        #     self.frame10 = self.findChild(QFrame, "frame10")
-        #     self.frame11 = self.findChild(QFrame, "frame11")
+        #     self.frame1 = self.findChild(QLabel, "frame1")
+        #     self.frame2 = self.findChild(QLabel, "frame2")
+        #     self.frame3 = self.findChild(QLabel, "frame3")
+        #     self.frame4 = self.findChild(QLabel, "frame4")
+        #     self.frame5 = self.findChild(QLabel, "frame5")
+        #     self.frame6 = self.findChild(QLabel, "frame6")
+        #     self.frame7 = self.findChild(QLabel, "frame7")
+        #     self.frame8 = self.findChild(QLabel, "frame8")
+        #     self.frame9 = self.findChild(QLabel, "frame9")
+        #     self.frame10 = self.findChild(QLabel, "frame10")
+        #     self.frame11 = self.findChild(QLabel, "frame11")
         #     self.button1 = self.findChild(btn.DetailButton, "detail1")
         #     self.button2 = self.findChild(btn.DetailButton, "detail2")
         #     self.button3 = self.findChild(btn.DetailButton, "detail3")
@@ -193,3 +258,26 @@ class InfoWindow(QDialog):
         #         j += 480
         #     self.group_animation.start()
         #     self.con.close()
+
+
+
+            # cur.execute("SELECT umur FROM Hewan WHERE id=?", (id,))
+            # umur = cur.fetchone()[0]
+            # self.umur.setText(str(umur))
+           
+
+            # # Menampilkan data lahir
+            # cur.execute("SELECT birthdate FROM Hewan WHERE id=?", (id,))
+            # lahir = cur.fetchone()[0]
+            # self.lahir.setText(str(lahir))
+
+
+            # # Menampilkan data gender
+            # cur.execute("SELECT jenis FROM Hewan WHERE id=?", (id,))
+            # gender = cur.fetchone()[0]
+            # self.gender.setText(str(gender))
+
+            # # Menampilkan data berat
+            # cur.execute("SELECT berat FROM Hewan WHERE id=?", (id,))
+            # berat = cur.fetchone()[0]
+            # self.berat.setText(str(berat))

@@ -119,26 +119,6 @@ text-decoration: underline;
  Kesehatan</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="inputFoto">
-   <property name="geometry">
-    <rect>
-     <x>181</x>
-     <y>254</y>
-     <width>379</width>
-     <height>379</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">
-border : none;
-border-radius: 34px;
-background-repeat: none;
-</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QLabel" name="nama">
    <property name="geometry">
     <rect>
@@ -152,7 +132,7 @@ background-repeat: none;
     <string>nama</string>
    </property>
   </widget>
-  <widget class="QLabel" name="jenis">
+  <widget class="QLabel" name="jenisHewan">
    <property name="geometry">
     <rect>
      <x>261</x>
@@ -409,7 +389,8 @@ background-repeat: none;
       <string/>
      </property>
      <property name="icon">
-      <iconset theme="edit.png"/>
+      <iconset theme="edit.png">
+       <normaloff>.</normaloff>.</iconset>
      </property>
     </widget>
     <widget class="QPushButton" name="editButton">
@@ -632,9 +613,21 @@ background-repeat: none;
     </widget>
    </widget>
   </widget>
+  <widget class="QLabel" name="fotoHewan">
+   <property name="geometry">
+    <rect>
+     <x>181</x>
+     <y>254</y>
+     <width>379</width>
+     <height>379</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
  </widget>
  <resources>
-  <include location="../Assets/resource.qrc"/>
   <include location="../Assets/edit.qrc"/>
  </resources>
  <connections/>
