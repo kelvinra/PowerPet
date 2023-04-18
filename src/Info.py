@@ -62,80 +62,80 @@ class InfoWindow(QDialog):
         # self.editbtn.clicked.connect(lambda: self.editDetailInfo)
 
 
-        def showData (self, ID) :
-            self.con = mdb.connect('src/DataBase/Hewan.db')
-            self.cur = self.con.cursor()
-            self.fotoLbl = self.findChild(QLabel, 'fotoHewan')
-            self.namaLbl = self.findChild(QLabel, 'nama')
-            self.jenisLbl = self.findChild(QLabel, 'jenisHewan')
-            self.umurLbl = self.findChild(QLabel, 'umur')
-            self.birthLbl = self.findChild(QLabel, 'lahir')
-            # self.genderLbl = self.findChild(QLabel, 'gender')
-            self.beratLbl = self.findChild(QLabel, 'berat')
-            # self.cur.execute("SELECT nama,jenis,umur,birthdate,berat,foto FROM Hewan WHERE ID =?", (ID,))
-            self.cur.execute("SELECT foto FROM Hewan WHERE ID =?", (ID,))
-            foto = self.cur.fetchone()[0]
-            fotoByte = bytes(foto, encoding='utf-8')
-            fotoHwn = QtGui.QPixmap()
-            fotoHwn.loadFromData(fotoByte)
-            self.fotoLbl.setPixmap(fotoHwn)
-            self.fotoLbl.setScaledContents(True)
-            self.fotoLbl.show()
+    def showData (self, ID) :
+        self.con = mdb.connect('src/DataBase/Hewan.db')
+        self.cur = self.con.cursor()
+        self.fotoLbl = self.findChild(QLabel, 'fotoHewan')
+        self.namaLbl = self.findChild(QLabel, 'nama')
+        self.jenisLbl = self.findChild(QLabel, 'jenisHewan')
+        self.umurLbl = self.findChild(QLabel, 'umur')
+        self.birthLbl = self.findChild(QLabel, 'lahir')
+        # self.genderLbl = self.findChild(QLabel, 'gender')
+        self.beratLbl = self.findChild(QLabel, 'berat')
+        # self.cur.execute("SELECT nama,jenis,umur,birthdate,berat,foto FROM Hewan WHERE ID =?", (ID,))
+        self.cur.execute("SELECT foto FROM Hewan WHERE ID =?", (ID,))
+        foto = self.cur.fetchone()[0]
+        fotoByte = bytes(foto, encoding='utf-8')
+        fotoHwn = QtGui.QPixmap()
+        fotoHwn.loadFromData(fotoByte)
+        self.fotoLbl.setPixmap(fotoHwn)
+        self.fotoLbl.setScaledContents(True)
+        self.fotoLbl.show()
 
-            self.cur.execute("SELECT nama FROM Hewan WHERE ID =?", (ID,))
-            nama = self.cur.fetchone()[0]
-            self.namaLbl.setText(nama)
-            self.namaLbl.show()
-            
-            self.cur.execute("SELECT jenis FROM Hewan WHERE ID =?", (ID,))
-            jenis = self.cur.fetchone()[0]
-            self.jenisLbl.setText(jenis)
-            self.jenisLbl.show()
+        self.cur.execute("SELECT nama FROM Hewan WHERE ID =?", (ID,))
+        nama = self.cur.fetchone()[0]
+        self.namaLbl.setText(nama)
+        self.namaLbl.show()
+        
+        self.cur.execute("SELECT jenis FROM Hewan WHERE ID =?", (ID,))
+        jenis = self.cur.fetchone()[0]
+        self.jenisLbl.setText(jenis)
+        self.jenisLbl.show()
 
-            self.cur.execute("SELECT umur FROM Hewan WHERE ID =?", (ID,))
-            umur = self.cur.fetchone()[0]
-            self.umurLbl.setText(str(umur))
-            self.umurLbl.show()
+        self.cur.execute("SELECT umur FROM Hewan WHERE ID =?", (ID,))
+        umur = self.cur.fetchone()[0]
+        self.umurLbl.setText(str(umur))
+        self.umurLbl.show()
 
-            self.cur.execute("SELECT birthdate FROM Hewan WHERE ID =?", (ID,))
-            bday = self.cur.fetchone()[0]
-            self.birthLbl.setText(bday)
-            self.birthLbl.show()
+        self.cur.execute("SELECT birthdate FROM Hewan WHERE ID =?", (ID,))
+        bday = self.cur.fetchone()[0]
+        self.birthLbl.setText(bday)
+        self.birthLbl.show()
 
-            self.cur.execute("SELECT berat FROM Hewan WHERE ID =?", (ID,))
-            berat = self.cur.fetchone()[0]
-            self.beratLbl.setText(str(berat))
-            self.beratLbl.show()
+        self.cur.execute("SELECT berat FROM Hewan WHERE ID =?", (ID,))
+        berat = self.cur.fetchone()[0]
+        self.beratLbl.setText(str(berat))
+        self.beratLbl.show()
 
 
-            self.con.close()
+        self.con.close()
 
-        showData(self, 2)
-            
-        # def showFoto(self, ID):
-        #     self.fotoLbl = self.findChild(QLabel, 'fotoHewan')
-        #     self.con = mdb.connect('src/DataBase/Hewan.db')
-        #     self.cur = self.con.cursor()
-        #     self.cur.execute("SELECT foto FROM Hewan WHERE ID =?", (ID,))
-        #     foto = self.cur.fetchone()[0]
-        #     fotoByte = bytes(foto, encoding='utf-8')
-        #     fotoHwn = QtGui.QPixmap()
-        #     fotoHwn.loadFromData(fotoByte)
+    # showData(self, 2)
+        
+    # def showFoto(self, ID):
+    #     self.fotoLbl = self.findChild(QLabel, 'fotoHewan')
+    #     self.con = mdb.connect('src/DataBase/Hewan.db')
+    #     self.cur = self.con.cursor()
+    #     self.cur.execute("SELECT foto FROM Hewan WHERE ID =?", (ID,))
+    #     foto = self.cur.fetchone()[0]
+    #     fotoByte = bytes(foto, encoding='utf-8')
+    #     fotoHwn = QtGui.QPixmap()
+    #     fotoHwn.loadFromData(fotoByte)
 
-        #     self.fotoLbl.setPixmap(fotoHwn)
-        #     self.fotoLbl.setScaledContents(True)
-        #     self.fotoLbl.show()
-        #     self.con.close()
+    #     self.fotoLbl.setPixmap(fotoHwn)
+    #     self.fotoLbl.setScaledContents(True)
+    #     self.fotoLbl.show()
+    #     self.con.close()
 
-        # def showNama(self, ID):
-        #     self.namaLbl = self.findChild(QLabel, 'nama')
-        #     self.con = mdb.connect('src/DataBase/Hewan.db')
-        #     self.cur = self.con.cursor()
-        #     self.cur.execute("SELECT nama FROM Hewan WHERE ID =?", (ID,))
-        #     nama = self.cur.fetchone()[0]
-        #     self.namaLbl.setText(nama)
-        #     self.namaLbl.show()
-        #     self.con.close()
+    # def showNama(self, ID):
+    #     self.namaLbl = self.findChild(QLabel, 'nama')
+    #     self.con = mdb.connect('src/DataBase/Hewan.db')
+    #     self.cur = self.con.cursor()
+    #     self.cur.execute("SELECT nama FROM Hewan WHERE ID =?", (ID,))
+    #     nama = self.cur.fetchone()[0]
+    #     self.namaLbl.setText(nama)
+    #     self.namaLbl.show()
+    #     self.con.close()
             
        
         
