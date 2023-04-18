@@ -33,6 +33,7 @@ class MenuWindow(QDialog):
         self.jumlahHewan = 0
         self.carouselwidth = 1920
         self.carousel = QFrame(self)
+        self.carouselLayout = QHBoxLayout(self.carousel)
         self.sidebarcounter = 0
         self.frames = []
         self.buttons = []
@@ -56,7 +57,24 @@ class MenuWindow(QDialog):
             sip.delete(layout)
         
     def showEvent(self, event):
-        self.deleteLayout(self.carousel.layout())
+        # self.deleteLayout(self.carousel.layout())
+        # # self.carousel = QFrame(self)
+        # self.carousel.setGeometry(QRect(0, self.poscarosel, 1920, 631))
+        # self.carouselLayout = QHBoxLayout(self.carousel)
+        # self.carouselLayout.setSpacing(15)
+        # self.carouselLayout.setContentsMargins(0, 0, 0, 0)
+        # self.carouselLayout.setObjectName("carouselLayout")
+        # self.carousel.setLayout(self.carouselLayout)
+        # self.frames.clear()
+        # self.buttons.clear()
+        # self.frames = []
+        print("show")
+        # self.buttons = []
+        # self.createCard()
+    
+    def resetPage(self):
+        print("kontol")
+        # self.deleteLayout(self.carousel.layout())
         self.carousel.setGeometry(QRect(0, self.poscarosel, 1920, 631))
         self.carouselLayout = QHBoxLayout(self.carousel)
         self.carouselLayout.setSpacing(15)
@@ -65,6 +83,8 @@ class MenuWindow(QDialog):
         self.carousel.setLayout(self.carouselLayout)
         self.frames.clear()
         self.buttons.clear()
+        self.frames = []
+        self.buttons = []
         self.createCard()
 
     def slideleft(self):
@@ -85,13 +105,6 @@ class MenuWindow(QDialog):
         self.animation.setDuration(1000)
         self.animation.start()
 
-    # def animate(self, widget, pos):
-    #     widget.show()
-    #     self.animation = QPropertyAnimation(widget, b"pos")
-    #     self.animation.setEasingCurve(QEasingCurve.InOutCubic)
-    #     self.animation.setStartValue(QPoint(1920, 0))
-    #     self.animation.setEndValue(QPoint(pos,0))
-    #     self.animation.setDuration(1000)
 
     def sidebaranimate(self):
         if self.sidebarcounter == 0:
@@ -155,6 +168,8 @@ class MenuWindow(QDialog):
             # create Label in frame
             self.label = QLabel(self.frame)
             self.label.setGeometry(QRect(107, 60, 246, 245))
+
+            
             self.label.setStyleSheet("border-radius: 95px; background-position: center;border : none; background-color: rgb(255, 255, 255, 0.9)")
             self.pixmap = QtGui.QPixmap(row[3])
             self.label.setPixmap(self.pixmap)

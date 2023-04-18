@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="src/Assets">
+    <file>edit.png</file>
+  </qresource>
+</RCC>
