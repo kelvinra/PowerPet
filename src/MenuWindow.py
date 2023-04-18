@@ -62,13 +62,6 @@ class MenuWindow(QDialog):
         self.animation.setDuration(1000)
         self.animation.start()
 
-    # def animate(self, widget, pos):
-    #     widget.show()
-    #     self.animation = QPropertyAnimation(widget, b"pos")
-    #     self.animation.setEasingCurve(QEasingCurve.InOutCubic)
-    #     self.animation.setStartValue(QPoint(1920, 0))
-    #     self.animation.setEndValue(QPoint(pos,0))
-    #     self.animation.setDuration(1000)
 
     def createCard(self):
         self.con = mdb.connect('src\DataBase\Hewan.db')
@@ -100,6 +93,8 @@ class MenuWindow(QDialog):
             # create Label in frame
             self.label = QLabel(self.frame)
             self.label.setGeometry(QRect(107, 60, 246, 245))
+
+            
             self.label.setStyleSheet("border-radius: 95px; background-position: center;border : none; background-color: rgb(255, 255, 255, 0.9)")
             self.pixmap = QtGui.QPixmap(row[3])
             self.label.setPixmap(self.pixmap)
@@ -188,8 +183,7 @@ class MenuWindow(QDialog):
         self.group_animation.start()
         self.con.close()
 
-    def detail(self):
-        print("Kontol")
+    
     def tambahHewan(self):
         self.hewan = h.Hewan(1, "Kucing", "Kucing", "Daging", 1, "1/1/2019", "Jantan", 10)
         print(self.jumlahHewan)

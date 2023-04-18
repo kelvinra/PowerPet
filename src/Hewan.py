@@ -57,4 +57,6 @@ class Hewan:
     def getBerat(self):
         return self.berat
     
-    
+
+# genderlist = ["jantan", "betina"]
+# gender = input(genderlist
