@@ -36,16 +36,11 @@ class app(QApplication):
         self.add.submitbtn.clicked.connect(lambda: self.widget.setCurrentIndex(1))
         self.add.backHome.clicked.connect(lambda: self.widget.setCurrentIndex(1))
         self.menu.pushButton.clicked.connect(lambda: self.widget.setCurrentIndex(3))
-        print(len(self.menu.buttons))
         for i in range (0, len(self.menu.buttons)):
-            
-            print("memek")
             self.menu.buttons[i].clicked.connect(partial(self.showDetail, i))
-        # self.menu.button1.clicked.connect(lambda: self.showDetail(1))
         
         
     def showDetail(self, i):
-        print("kontol")
         self.widget.setCurrentIndex(4)
         self.info.showData(i+1)
 
