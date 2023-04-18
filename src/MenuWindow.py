@@ -7,6 +7,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import Hewan as h
 import Button as btn
 import sqlite3 as mdb
+import Info
 
 class MenuWindow(QDialog):
     def __init__(self):
@@ -14,6 +15,7 @@ class MenuWindow(QDialog):
         super(MenuWindow, self).__init__()
         loadUi('src\BuilderUI\Menu.ui', self)
         self.Arrow1 = btn.ArrowButton()
+        self.info = Info.InfoWindow()
         self.Arrow1.setGeometry(20,860,80,80)
         self.Arrow1.setParent(self)
         self.Arrow2 = btn.ArrowButton()
@@ -33,6 +35,9 @@ class MenuWindow(QDialog):
         self.carouselwidth = 1920
         self.carousel = QFrame(self)
         self.sidebarcounter = 0
+        self.frames = []
+        self.buttons = []
+        self.carouselLayout = QHBoxLayout(self.carousel)
         
 
         # set the QStackedLayout as the layout for the carousel widget
@@ -46,6 +51,7 @@ class MenuWindow(QDialog):
         self.carouselLayout.setObjectName("carouselLayout")
         self.carousel.setLayout(self.carouselLayout)
         self.createCard()
+        print(len(self.buttons))
 
     def slideleft(self):
         self.animation = QPropertyAnimation(self.carousel, b"pos")
@@ -65,13 +71,6 @@ class MenuWindow(QDialog):
         self.animation.setDuration(1000)
         self.animation.start()
 
-    # def animate(self, widget, pos):
-    #     widget.show()
-    #     self.animation = QPropertyAnimation(widget, b"pos")
-    #     self.animation.setEasingCurve(QEasingCurve.InOutCubic)
-    #     self.animation.setStartValue(QPoint(1920, 0))
-    #     self.animation.setEndValue(QPoint(pos,0))
-    #     self.animation.setDuration(1000)
 
     def sidebaranimate(self):
         if self.sidebarcounter == 0:
@@ -111,8 +110,6 @@ class MenuWindow(QDialog):
         self.cur.execute("SELECT ID, nama, jenis, foto FROM Hewan")
         rows = self.cur.fetchall()
         i = 1
-        self.frames = []
-        self.buttons = []
         for row in rows:
         # set the geometry of the frame
             self.frame = QFrame(self.carousel)
@@ -135,6 +132,8 @@ class MenuWindow(QDialog):
             # create Label in frame
             self.label = QLabel(self.frame)
             self.label.setGeometry(QRect(107, 60, 246, 245))
+
+            
             self.label.setStyleSheet("border-radius: 95px; background-position: center;border : none; background-color: rgb(255, 255, 255, 0.9)")
             self.pixmap = QtGui.QPixmap(row[3])
             self.label.setPixmap(self.pixmap)
@@ -160,9 +159,8 @@ class MenuWindow(QDialog):
             self.detail.setParent(self.frame)
             self.namebtn = "detail" + str(i)
             self.detail.setGeometry(QRect(139, 490, 180, 60))
-            self.detail.setObjectName(self.namebtn)
+            self.detail.setObjectName("button{}".format(i))
             self.buttons.append(self.detail)
-            # self.detail.setStyleSheet("backgroun")
             
             # add the frame to the carousel layout
             self.carouselLayout.setSpacing(5)
@@ -185,17 +183,17 @@ class MenuWindow(QDialog):
         # self.frame9 = self.findChild(QFrame, "frame9")
         # self.frame10 = self.findChild(QFrame, "frame10")
         # self.frame11 = self.findChild(QFrame, "frame11")
-        # self.button1 = self.findChild(btn.DetailButton, "detail1")
-        # self.button2 = self.findChild(btn.DetailButton, "detail2")
-        # self.button3 = self.findChild(btn.DetailButton, "detail3")
-        # self.button4 = self.findChild(btn.DetailButton, "detail4")
-        # self.button5 = self.findChild(btn.DetailButton, "detail5")
-        # self.button6 = self.findChild(btn.DetailButton, "detail6")
-        # self.button7 = self.findChild(btn.DetailButton, "detail7")
-        # self.button8 = self.findChild(btn.DetailButton, "detail8")
-        # self.button9 = self.findChild(btn.DetailButton, "detail9")
-        # self.button10 = self.findChild(btn.DetailButton, "detail10")
-        # self.button11 = self.findChild(btn.DetailButton, "detail11")
+        self.button1 = self.findChild(btn.DetailButton, "detail1")
+        self.button2 = self.findChild(btn.DetailButton, "detail2")
+        self.button3 = self.findChild(btn.DetailButton, "detail3")
+        self.button4 = self.findChild(btn.DetailButton, "detail4")
+        self.button5 = self.findChild(btn.DetailButton, "detail5")
+        self.button6 = self.findChild(btn.DetailButton, "detail6")
+        self.button7 = self.findChild(btn.DetailButton, "detail7")
+        self.button8 = self.findChild(btn.DetailButton, "detail8")
+        self.button9 = self.findChild(btn.DetailButton, "detail9")
+        self.button10 = self.findChild(btn.DetailButton, "detail10")
+        self.button11 = self.findChild(btn.DetailButton, "detail11")
         if self.frames.count == 1:
             self.frame1.hide()
         elif self.frames.count == 2:
@@ -220,6 +218,8 @@ class MenuWindow(QDialog):
             self.animation.setDuration(1300)
             self.group_animation.addAnimation(self.animation)
             j += 480
+        # for i in range (0, len(self.buttons)):
+        #     self.menu.buttons[i].clicked.connect(self.showDetail(i))
         self.group_animation.start()
         self.con.close()
 
