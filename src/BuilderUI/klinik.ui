@@ -226,6 +226,22 @@ padding-right: 30px;
     <string>Klinik Hewan</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="backHome">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>60</y>
+     <width>411</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border:none</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
