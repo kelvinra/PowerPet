@@ -87,6 +87,21 @@ class InfoWindow(QDialog):
         self.genderLbl = self.findChild(QLabel, 'gender')
         self.beratLbl = self.findChild(QLabel, 'berat')
         self.umurLbl = self.findChild(QLabel, 'umur')
+
+        self.catKesLayout = self.findChild(QVBoxLayout, 'cardLayout_5')
+        self.catKesLayout.setSpacing(20)
+
+        self.catKesContainer = QtWidgets.QWidget()
+        self.catKesContainer.setStyleSheet("background-color: transparent;")
+        self.catKesContainer.setLayout(self.catKesLayout)
+
+        self.catKesScrollArea = self.findChild(QtWidgets.QScrollArea, "scrollArea")
+        self.scrollArea.setWidget(self.catKesContainer)
+
+        # make the cardLayout items always on top
+        self.catKesLayout.setAlignment(QtCore.Qt.AlignTop)
+        self.catKesScrollArea.setFrameShape(QtWidgets.QFrame.NoFrame)
+
         # self.editDetailInfo = self.findChild(QWidget, Add.AddWindow().__init__().stackedWidget.setCurrentIndex(0))
         self.indtbtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
         self.mafabtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
@@ -162,7 +177,7 @@ class InfoWindow(QDialog):
         namamakanan = self.cur.fetchone()[0]
         self.editnamamakanan.setText(namamakanan)
 
-
+        self.update_catkes_cards()
 
         self.con.close()
 
@@ -307,4 +322,153 @@ class InfoWindow(QDialog):
         self.con.close()
         self.showData(self.idData)
     
+    def load_catkes_data(self):
+        con = mdb.connect("src/DataBase/Hewan.db")
+        cur = con.cursor()
+        cur.execute("SELECT * FROM Kesehatan WHERE ID_Hewan = ?", (self.idData,))
+        data = cur.fetchall()
+        return data
+    
+    def add_catkes_card(self, catatan, periode, tanggal):
+        card = QtWidgets.QWidget()
+        # set min max card size
+        card.setMinimumSize(493, 86)
+        card.setMaximumSize(493, 86)
+        card.setStyleSheet("background-color: #FD7F63; border-radius: 20px;")
+        card.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+
+        # add shadow to the card
+        shadow = QtWidgets.QGraphicsDropShadowEffect()
+        shadow.setBlurRadius(4)
+        shadow.setXOffset(0)
+        shadow.setYOffset(4)
+        shadow.setColor(QtGui.QColor(0, 0, 0, 60))
+        card.setGraphicsEffect(shadow)
+
+        layout = QtWidgets.QHBoxLayout()
+
+        layout1 = QtWidgets.QVBoxLayout()
+        layout1.setAlignment(QtCore.Qt.AlignTop)
+        layout1.setSpacing(0)
+
+        layout2 = QtWidgets.QVBoxLayout()
+        layout2.setAlignment(QtCore.Qt.AlignTop)
+        layout2.setSpacing(0)
+
+        layout3 = QtWidgets.QVBoxLayout()
+        layout3.setAlignment(QtCore.Qt.AlignTop)
+        layout3.setSpacing(0)
+
+        layout4 = QtWidgets.QVBoxLayout()
+        layout4.setAlignment(QtCore.Qt.AlignTop)
+        layout4.setSpacing(0)
+
+        catatan_label = QtWidgets.QLineEdit(catatan)
+        catatan_label.setStyleSheet("color: #FFFFFF; font-size: 24px;")
+        catatan_label.setReadOnly(True)
+        catatan_label.setObjectName("catatan")
+        
+        periode_label = QtWidgets.QLineEdit(periode)
+        periode_label.setStyleSheet("color: #FFFFFF; font-size: 28px;")
+        periode_label.setReadOnly(True)
+        periode_label.setObjectName("periode")
+
+        tanggal_label = QtWidgets.QLineEdit(tanggal)
+        tanggal_label.setStyleSheet("color: #FFFFFF; font-size: 20px;")
+        tanggal_label.setReadOnly(True)
+        tanggal_label.setObjectName("tanggal")
+
+        per_label = QtWidgets.QLabel("per")
+        per_label.setStyleSheet("color: #FFFFFF; font-size: 10px;")
+        bulan_label = QtWidgets.QLabel("bulan")
+        bulan_label.setStyleSheet("color: #FFFFFF; font-size: 12px;")
+
+        edit_button = QtWidgets.QPushButton("Edit")
+        edit_button.clicked.connect(lambda: self.edit_card(card))
+        edit_button.setObjectName("edit")
+        edit_button.setStyleSheet("QPushButton {color: #FFFFFF; font-size: 12px; background-color: gray; border-radius: 5px; padding: 5px; margin: 5px; border: 1px solid #FFFFFF;} QPushButton:hover {background-color: #FFFFFF; color: #FD7F63;}")
+        delete_button = QtWidgets.QPushButton("Delete")
+        delete_button.clicked.connect(lambda: self.delete_card(card))
+        delete_button.setStyleSheet("QPushButton {color: #FFFFFF; font-size: 12px; background-color: gray; border-radius: 5px; padding: 5px; margin: 5px; border: 1px solid #FFFFFF;} QPushButton:hover {background-color: #FFFFFF; color: #FD7F63;}")
+
+        layout1.addWidget(tanggal_label)
+
+        layout2.addWidget(per_label)
+        layout2.addWidget(periode_label)
+        layout2.addWidget(bulan_label)
+
+        layout3.addWidget(catatan_label)
+
+        layout4.addWidget(edit_button)
+        layout4.addWidget(delete_button)
+
+        layout1.setAlignment(QtCore.Qt.AlignCenter)
+        layout2.setAlignment(QtCore.Qt.AlignCenter)
+        layout3.setAlignment(QtCore.Qt.AlignCenter)
+        layout4.setAlignment(QtCore.Qt.AlignCenter)
+
+        layout.addLayout(layout1, 4)
+        layout.addLayout(layout2, 3)
+        layout.addLayout(layout3, 6)
+        layout.addLayout(layout4, 2)
+
+        #make the tanggal horizontally and vertically centered
+
+
+        card.setLayout(layout)
+
+        self.catKesLayout.addWidget(card)
+    
+    def edit_card(self, card):
+        catatan = card.findChild(QtWidgets.QLineEdit, "catatan")
+        periode = card.findChild(QtWidgets.QLineEdit, "periode")
+        tanggal = card.findChild(QtWidgets.QLineEdit, "tanggal")
+        cTemp = catatan.text()
+        pTemp = periode.text()
+        tTemp = tanggal.text()
+        catatan.setReadOnly(False)
+        periode.setReadOnly(False)
+        tanggal.setReadOnly(False)
+        edit_button = card.findChild(QtWidgets.QPushButton, "edit")
+        edit_button.setText("Save")
+        edit_button.clicked.connect(lambda: self.save_card(cTemp, pTemp, tTemp, card))
+
+    def save_card(self, c, p, t, card):
+        catatan = card.findChild(QtWidgets.QLineEdit, "catatan")
+        periode = card.findChild(QtWidgets.QLineEdit, "periode")
+        tanggal = card.findChild(QtWidgets.QLineEdit, "tanggal")
+        catatan.setReadOnly(True)
+        periode.setReadOnly(True)
+        tanggal.setReadOnly(True)
+        edit_button = card.findChild(QtWidgets.QPushButton, "edit")
+        edit_button.setText("Edit")
+        edit_button.clicked.connect(lambda: self.edit_card(card))
+        con = mdb.connect("src/DataBase/Hewan.db")
+        cur = con.cursor()
+        cur.execute("UPDATE Kesehatan SET catatan = ?, periode = ?, tanggal = ? WHERE ID_Hewan = ? AND catatan = ? AND periode = ? AND tanggal = ?", (catatan.text(), periode.text(), tanggal.text(), self.idData, c, p, t))
+        con.commit()
+        con.close()   
+        
+    def delete_card(self, card):
+        self.catKesLayout.removeWidget(card)
+        card.deleteLater()
+        catatan = card.findChild(QtWidgets.QLineEdit, "catatan")
+        periode = card.findChild(QtWidgets.QLineEdit, "periode")
+        tanggal = card.findChild(QtWidgets.QLineEdit, "tanggal")
+        con = mdb.connect("src/DataBase/Hewan.db")
+        cur = con.cursor()
+        cur.execute("DELETE FROM Kesehatan WHERE ID_Hewan = ? AND Catatan = ? AND Periode = ? AND Tanggal = ?", (self.idData, catatan.text(), periode.text(), tanggal.text()))
+        con.commit()
+        con.close()
+
+    def delete_catkes_cards(self):
+        for i in reversed(range(self.catKesLayout.count())): 
+            self.catKesLayout.itemAt(i).widget().setParent(None)
+    
+    def update_catkes_cards(self):
+        self.delete_catkes_cards()
+        data = self.load_catkes_data()
+        for catkes in data:
+            self.add_catkes_card(catkes[2], catkes[3], catkes[4])
+
     

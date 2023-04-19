@@ -72,8 +72,20 @@ j3 = "INSERT INTO Aktivitas (ID_Hewan,nama_aktivitas,tanggal,prioritas) \
 j4 = "INSERT INTO Aktivitas (ID_Hewan,nama_aktivitas,tanggal,prioritas) \
         VALUES (1, 'Mandi', '2023-01-03', 2)"
 # conn.execute(j2)
-conn.execute(j3)
-conn.execute(j4)
+# conn.execute(j3)
+# conn.execute(j4)
+
+k1 = '''CREATE TABLE IF NOT EXISTS Kesehatan
+                (ID_Kesehatan INTEGER PRIMARY KEY AUTOINCREMENT,
+                ID_Hewan INTEGER NOT NULL,
+                catatan TEXT NOT NULL,
+                periode TEXT NOT NULL,
+                tanggal TEXT NOT NULL,
+                FOREIGN KEY (ID_Hewan) REFERENCES Hewan(ID));'''
+k2 = "DROP TABLE Kesehatan"
+k3 = "INSERT INTO Kesehatan (ID_Hewan,catatan,periode,tanggal) \
+        VALUES (1, 'Gonorhea', 14, '2023-01-03')"
+conn.execute(k3)
 conn.commit()
 print ("Table created successfully");
 conn.close()
