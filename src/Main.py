@@ -36,6 +36,7 @@ class app(QApplication):
         self.add.submitbtn.clicked.connect(lambda: self.backHome())
         self.add.backHome.clicked.connect(lambda: self.backHome())
         self.klinik.backHome.clicked.connect(lambda: self.backHome())
+        self.info.backHome.clicked.connect(lambda: self.backHome())
         self.menu.pushButton.clicked.connect(lambda: self.widget.setCurrentIndex(3))
         for i in range (0, len(self.menu.buttons)):
             self.menu.buttons[i].clicked.connect(partial(self.showDetail, i))
@@ -44,6 +45,8 @@ class app(QApplication):
     def backHome(self):
         self.widget.setCurrentIndex(1)
         self.menu.resetPage()
+        for i in range (0, len(self.menu.buttons)):
+            self.menu.buttons[i].clicked.connect(partial(self.showDetail, i))
     
     def showDetail(self, i):
         print("kontol")

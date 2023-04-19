@@ -122,8 +122,8 @@ text-decoration: underline;
   <widget class="QLabel" name="nama">
    <property name="geometry">
     <rect>
-     <x>261</x>
-     <y>669</y>
+     <x>220</x>
+     <y>700</y>
      <width>219</width>
      <height>76</height>
     </rect>
@@ -135,8 +135,8 @@ text-decoration: underline;
   <widget class="QLabel" name="jenisHewan">
    <property name="geometry">
     <rect>
-     <x>261</x>
-     <y>754</y>
+     <x>210</x>
+     <y>800</y>
      <width>270</width>
      <height>41</height>
     </rect>
@@ -155,7 +155,7 @@ text-decoration: underline;
     </rect>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="page">
     <widget class="QFrame" name="frame1">
@@ -184,38 +184,56 @@ text-decoration: underline;
      <property name="midLineWidth">
       <number>20</number>
      </property>
-     <widget class="QLabel" name="umur">
-      <property name="geometry">
-       <rect>
-        <x>60</x>
-        <y>50</y>
-        <width>221</width>
-        <height>91</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>48</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="text">
-       <string>umur</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
         <x>70</x>
         <y>140</y>
-        <width>201</width>
+        <width>151</width>
         <height>31</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="text">
        <string>Umur</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="editumur">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>40</y>
+        <width>251</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Inter</family>
+        <pointsize>27</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:none;
+background-color: rgb(255,255,255)</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="edit">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>150</y>
+        <width>41</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
@@ -238,24 +256,6 @@ text-decoration: underline;
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QLabel" name="gender">
-      <property name="geometry">
-       <rect>
-        <x>60</x>
-        <y>30</y>
-        <width>221</width>
-        <height>91</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>48</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>gender</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
@@ -265,8 +265,47 @@ text-decoration: underline;
         <height>31</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="text">
        <string>Jenis Kelamin</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="edit_2">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>150</y>
+        <width>41</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="editgender">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>40</y>
+        <width>251</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Inter</family>
+        <pointsize>27</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:none;
+background-color: rgb(255,255,255)</string>
       </property>
      </widget>
     </widget>
@@ -289,24 +328,6 @@ text-decoration: underline;
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QLabel" name="lahir">
-      <property name="geometry">
-       <rect>
-        <x>60</x>
-        <y>50</y>
-        <width>221</width>
-        <height>91</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>48</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>lahir</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
@@ -316,8 +337,47 @@ text-decoration: underline;
         <height>31</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="text">
        <string>Tanggal Lahir</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="editlahir">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>40</y>
+        <width>251</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Inter</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:none;
+background-color: rgb(255,255,255)</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="edit_3">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>150</y>
+        <width>41</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
@@ -341,24 +401,6 @@ text-decoration: underline;
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QLabel" name="berat">
-      <property name="geometry">
-       <rect>
-        <x>60</x>
-        <y>30</y>
-        <width>221</width>
-        <height>91</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>48</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>berat</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
@@ -368,50 +410,49 @@ text-decoration: underline;
         <height>31</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="text">
        <string>Berat</string>
       </property>
      </widget>
-    </widget>
-    <widget class="QPushButton" name="addButton">
-     <property name="geometry">
-      <rect>
-       <x>820</x>
-       <y>480</y>
-       <width>56</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="autoFillBackground">
-      <bool>true</bool>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset theme="edit.png">
-       <normaloff>.</normaloff>.</iconset>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="editButton">
-     <property name="geometry">
-      <rect>
-       <x>750</x>
-       <y>480</y>
-       <width>56</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="autoFillBackground">
-      <bool>true</bool>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset theme="edit.png">
-       <normaloff>.</normaloff>.</iconset>
-     </property>
+     <widget class="QLineEdit" name="editberat">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>40</y>
+        <width>251</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Inter</family>
+        <pointsize>27</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:none;
+background-color: rgb(255,255,255)</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="edit_4">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>150</y>
+        <width>41</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
     </widget>
    </widget>
    <widget class="QWidget" name="page_2">
@@ -435,7 +476,7 @@ text-decoration: underline;
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QLabel" name="namaMakanan">
+     <widget class="QLabel" name="jenisMakanan">
       <property name="geometry">
        <rect>
         <x>80</x>
@@ -450,10 +491,10 @@ text-decoration: underline;
        </font>
       </property>
       <property name="text">
-       <string>Nama Makanan</string>
+       <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="jenisMakanan">
+     <widget class="QLabel" name="namaMakanan">
       <property name="geometry">
        <rect>
         <x>80</x>
@@ -468,7 +509,7 @@ text-decoration: underline;
        </font>
       </property>
       <property name="text">
-       <string>Jenis Makanan</string>
+       <string/>
       </property>
      </widget>
     </widget>
@@ -623,7 +664,23 @@ text-decoration: underline;
     </rect>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="backHome">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>60</y>
+     <width>411</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border:none</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>
