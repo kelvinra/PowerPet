@@ -7,5 +7,3 @@ class MainWindow(QDialog):
     def __init__(self):
         super(MainWindow, self).__init__()
         loadUi('src/BuilderUI/Main.ui', self)
-
-    

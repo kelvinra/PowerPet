@@ -10,6 +10,8 @@ import Add as a
 import klinik as k
 import Info 
         
+import TampilJadwal as tj
+import InputJadwal as ij
 
 
 class app(QApplication):
