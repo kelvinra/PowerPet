@@ -449,7 +449,7 @@ class InfoWindow(QDialog):
         edit_button.clicked.connect(lambda: self.edit_card(card))
         con = mdb.connect("src/DataBase/Hewan.db")
         cur = con.cursor()
-        if c == "" and p == "" and t == "":
+        if c == "" and p == "" and t == "" and catatan.text() and periode.text() and tanggal.text():
             cur.execute("INSERT INTO Kesehatan (ID_Hewan, catatan, periode, tanggal) VALUES (?, ?, ?, ?)", (self.idData, catatan.text(), periode.text(), tanggal.text()))
         else:
             cur.execute("UPDATE Kesehatan SET catatan = ?, periode = ?, tanggal = ? WHERE ID_Hewan = ? AND catatan = ? AND periode = ? AND tanggal = ?", (catatan.text(), periode.text(), tanggal.text(), self.idData, c, p, t))
