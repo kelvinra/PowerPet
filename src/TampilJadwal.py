@@ -10,8 +10,8 @@ import datetime
 class TampilJadwal(QDialog):
     
 
-    def __init__(self, ID_Hewan):
-        self.ID_Hewan = ID_Hewan
+    def __init__(self):
+        self.ID_Hewan = 0
         super(TampilJadwal, self).__init__()
         loadUi('src/BuilderUI/TampilJadwal.ui', self)
         calendar = self.findChild(QtWidgets.QCalendarWidget, "calendarWidget")
@@ -26,7 +26,6 @@ class TampilJadwal(QDialog):
         calendar.setWeekdayTextFormat(QtCore.Qt.Saturday, day_format)
 
         # highlight the dates
-        self.init_highlight_dates()
 
         self.cardLayout = self.findChild(QtWidgets.QVBoxLayout, "cardLayout")
         self.cardLayout.setSpacing(20)
@@ -58,7 +57,8 @@ class TampilJadwal(QDialog):
 
         self.updateCards()
         
-    def init_highlight_dates(self):
+    def init_highlight_dates(self, id):
+        self.ID_Hewan = id
         data = self.load_data()
         highlighted_dates = [row[3] for row in data]
         format = QTextCharFormat()

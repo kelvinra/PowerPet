@@ -23,12 +23,14 @@ class app(QApplication):
         self.add = a.AddWindow()
         self.klinik = k.klinikWindow()
         self.info = Info.InfoWindow()
+        self.tampilJadwal = tj.TampilJadwal()
         self.widget = QtWidgets.QStackedWidget()
         self.widget.addWidget(self.window)
         self.widget.addWidget(self.menu)
         self.widget.addWidget(self.add)
         self.widget.addWidget(self.klinik)
         self.widget.addWidget(self.info)
+        self.widget.addWidget(self.tampilJadwal)
         self.widget.setFixedWidth(1920)
         self.widget.setFixedHeight(1024)
         self.widget.show()
@@ -40,10 +42,15 @@ class app(QApplication):
         self.klinik.backHome.clicked.connect(lambda: self.backHome())
         self.info.backHome.clicked.connect(lambda: self.backHome())
         self.menu.pushButton.clicked.connect(lambda: self.widget.setCurrentIndex(3))
+        self.info.jadwalbtn.clicked.connect(lambda: self.jadwalPage())
         for i in range (0, len(self.menu.buttons)):
             self.menu.buttons[i].clicked.connect(partial(self.showDetail, i))
         # self.menu.button1.clicked.connect(lambda: self.showDetail(1))
-        
+    
+    def jadwalPage(self):
+        self.widget.setCurrentIndex(5)
+        self.tampilJadwal.init_highlight_dates(self.info.idData)
+
     def backHome(self):
         self.widget.setCurrentIndex(1)
         self.menu.resetPage()

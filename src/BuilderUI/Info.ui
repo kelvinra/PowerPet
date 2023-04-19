@@ -129,7 +129,7 @@ text-decoration: underline;
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="page">
     <widget class="QFrame" name="frame1">
@@ -533,24 +533,6 @@ background-color: rgb(255,255,255)</string>
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QLabel" name="catkes_2">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>40</y>
-        <width>331</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Catatan Kesehatan</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="infoCatkes">
       <property name="geometry">
        <rect>
@@ -567,6 +549,27 @@ background-color: rgb(255,255,255)</string>
       </property>
       <property name="text">
        <string>Deskripsi</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="editcatatankesehatan">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>30</y>
+        <width>441</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Inter</family>
+        <pointsize>30</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:none</string>
       </property>
      </widget>
     </widget>
@@ -665,6 +668,19 @@ background-color: rgb(255,255,255)</string>
    </property>
    <property name="text">
     <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="jadwalbtn">
+   <property name="geometry">
+    <rect>
+     <x>1470</x>
+     <y>80</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Jadwal</string>
    </property>
   </widget>
  </widget>

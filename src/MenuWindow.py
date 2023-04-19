@@ -193,28 +193,7 @@ class MenuWindow(QDialog):
             self.carousel.setLayout(self.carouselLayout)
             i += 1
         
-        self.frame1 = self.findChild(QFrame, "frame1")
-        self.frame2 = self.findChild(QFrame, "frame2")
-        self.frame3 = self.findChild(QFrame, "frame3")
-        self.frame4 = self.findChild(QFrame, "frame4")
-        self.frame5 = self.findChild(QFrame, "frame5")
-        self.frame6 = self.findChild(QFrame, "frame6")
-        self.frame7 = self.findChild(QFrame, "frame7")
-        self.frame8 = self.findChild(QFrame, "frame8")
-        self.frame9 = self.findChild(QFrame, "frame9")
-        self.frame10 = self.findChild(QFrame, "frame10")
-        self.frame11 = self.findChild(QFrame, "frame11")
-        self.button1 = self.findChild(btn.DetailButton, "detail1")
-        self.button2 = self.findChild(btn.DetailButton, "detail2")
-        self.button3 = self.findChild(btn.DetailButton, "detail3")
-        self.button4 = self.findChild(btn.DetailButton, "detail4")
-        self.button5 = self.findChild(btn.DetailButton, "detail5")
-        self.button6 = self.findChild(btn.DetailButton, "detail6")
-        self.button7 = self.findChild(btn.DetailButton, "detail7")
-        self.button8 = self.findChild(btn.DetailButton, "detail8")
-        self.button9 = self.findChild(btn.DetailButton, "detail9")
-        self.button10 = self.findChild(btn.DetailButton, "detail10")
-        self.button11 = self.findChild(btn.DetailButton, "detail11")
+        
         if self.frames.count == 1:
             self.frame1.hide()
         elif self.frames.count == 2:
@@ -223,10 +202,7 @@ class MenuWindow(QDialog):
             self.frame3.hide()
         elif self.frames.count == 4:
             self.frame4.hide()
-        # self.animasi1 = self.animate(self.frame1, 0)
-        # self.animasi2 = self.animate(self.frame2, 480)
-        # self.animasi3 = self.animate(self.frame3, 960)
-        # self.animasi4 = self.animate(self.frame4, 1440)
+       
     
         self.group_animation = QParallelAnimationGroup()
         j = 0
