@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
+
 from PyQt5 import QtWidgets, QtCore, QtGui
 import sqlite3 as sql
 
@@ -54,10 +55,14 @@ class InputJadwal(QDialog):
         try:
             cur.execute("INSERT INTO Aktivitas (ID_Hewan, nama_aktivitas, tanggal, prioritas) VALUES (?,?,?,?)", (self.ID_Hewan, self.nama_kegiatan.text(), selected_date.toString("yyyy-MM-dd"), self.prioritas.value()))
             con.commit()
-            self.show_message_box("Data berhasil dimasukkan")
+            self.notif_value.setText("Data berhasil dimasukkan")
+            self.notif_container.show()
+            QtCore.QTimer.singleShot(3000, lambda: self.notif_container.hide())
         except:
             con.rollback()
-            self.show_message_box("Data gagal dimasukkan")
+            self.notif_value.setText("Data gagal dimasukkan")
+            self.notif_container.show()
+            QtCore.QTimer.singleShot(3000, lambda: self.notif_container.hide())
         con.close()
     
     def show_message_box(self, message):
