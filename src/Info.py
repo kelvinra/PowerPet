@@ -330,6 +330,7 @@ class InfoWindow(QDialog):
         cur = con.cursor()
         cur.execute("SELECT * FROM Kesehatan WHERE ID_Hewan = ?", (self.idData,))
         data = cur.fetchall()
+        con.close()
         return data
     
     def add_catkes_card(self, catatan, periode, tanggal):
