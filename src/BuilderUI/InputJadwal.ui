@@ -41,7 +41,7 @@ background-image: url(src/Assets/Menu.png);
    <property name="font">
     <font>
      <family>Inter</family>
-     <pointsize>18</pointsize>
+     <pointsize>15</pointsize>
      <weight>75</weight>
      <bold>true</bold>
      <strikeout>false</strikeout>
@@ -242,29 +242,29 @@ QCalendarWidget#qt_calendar_calendarview::item:selected {
   <widget class="QLabel" name="aktivitasLabel">
    <property name="geometry">
     <rect>
-     <x>748</x>
-     <y>261</y>
+     <x>590</x>
+     <y>400</y>
      <width>801</width>
      <height>96</height>
     </rect>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-family:'Inter'; font-size:40pt;&quot;&gt;Aktivitas Hewan Kesayanganmu&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;left&quot;&gt;&lt;span style=&quot; font-family:'Inter'; font-size:20pt;&quot;&gt;Aktivitas Hewan Kesayanganmu&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="namaKegiatan">
    <property name="geometry">
     <rect>
-     <x>718</x>
-     <y>405</y>
-     <width>861</width>
-     <height>71</height>
+     <x>595</x>
+     <y>500</y>
+     <width>611</width>
+     <height>61</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Inter</family>
-     <pointsize>26</pointsize>
+     <pointsize>15</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -280,16 +280,16 @@ QCalendarWidget#qt_calendar_calendarview::item:selected {
   <widget class="QSpinBox" name="prioritasBox">
    <property name="geometry">
     <rect>
-     <x>718</x>
-     <y>620</y>
-     <width>150</width>
-     <height>100</height>
+     <x>600</x>
+     <y>650</y>
+     <width>91</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Inter</family>
-     <pointsize>26</pointsize>
+     <pointsize>16</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -300,8 +300,8 @@ QCalendarWidget#qt_calendar_calendarview::item:selected {
 QSpinBox::up-button, QSpinBox::down-button {
     background-color: #FFFFFF;
     border: none;
-    width: 50px;
-    height: 50px;
+    width: 25px;
+    height: 25px;
 }
 
 QSpinBox::up-button {
@@ -330,21 +330,21 @@ QSpinBox::up-button:pressed, QSpinBox::down-button:pressed {
   <widget class="QLabel" name="aktivitasLabel_2">
    <property name="geometry">
     <rect>
-     <x>720</x>
-     <y>530</y>
+     <x>590</x>
+     <y>590</y>
      <width>211</width>
      <height>61</height>
     </rect>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-family:'Inter'; font-size:40pt;&quot;&gt;Prioritas&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;left&quot;&gt;&lt;span style=&quot; font-family:'Inter'; font-size:20pt;&quot;&gt;Prioritas&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="confirmInput">
    <property name="geometry">
     <rect>
-     <x>1080</x>
-     <y>730</y>
+     <x>1020</x>
+     <y>650</y>
      <width>171</width>
      <height>51</height>
     </rect>
@@ -352,7 +352,7 @@ QSpinBox::up-button:pressed, QSpinBox::down-button:pressed {
    <property name="font">
     <font>
      <family>Inter</family>
-     <pointsize>18</pointsize>
+     <pointsize>12</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -394,8 +394,29 @@ QPushButton:pressed {
      <height>71</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>6</pointsize>
+    </font>
+   </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-family:'Inter'; font-size:40pt;&quot;&gt;Pilih Tanggal&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-family:'Inter'; font-size:25pt;&quot;&gt;Pilih Tanggal&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="backbtn">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>60</y>
+     <width>411</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border:none</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>

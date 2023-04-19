@@ -65,15 +65,21 @@ j1 = '''CREATE TABLE IF NOT EXISTS Aktivitas
          tanggal TEXT NOT NULL,
          prioritas INTEGER NOT NULL,
          FOREIGN KEY (ID_Hewan) REFERENCES Hewan(ID));'''
-conn.execute(j1)
+# conn.execute(j1)
 
 j3 = "INSERT INTO Aktivitas (ID_Hewan,nama_aktivitas,tanggal,prioritas) \
         VALUES (1, 'Makan', '2023-01-02', 1)"
 j4 = "INSERT INTO Aktivitas (ID_Hewan,nama_aktivitas,tanggal,prioritas) \
         VALUES (1, 'Mandi', '2023-01-03', 2)"
-# conn.execute(j2)
-conn.execute(j3)
-conn.execute(j4)
+conn.execute(q1)
+conn.execute(q2)
+conn.execute(q3)
+conn.execute(q4)
+conn.execute(q5)
+# conn.execute(j3)
+# conn.execute(j4)
+z1 = "Drop table Hewan"
+# conn.execute(z1)
 conn.commit()
 print ("Table created successfully");
 conn.close()

@@ -69,6 +69,7 @@ class TampilJadwal(QDialog):
         for date in highlighted_dates:
             dateformat = QDate.fromString(date, "yyyy-MM-dd")
             calendar.setDateTextFormat(dateformat, format)
+        self.updateCards()
     
     def load_data(self):
         con = sql.connect("src/DataBase/Hewan.db")

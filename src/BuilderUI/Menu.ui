@@ -204,9 +204,40 @@ background-color: rgb(243, 103, 72, 0.6);
     </property>
    </widget>
   </widget>
+  <widget class="QPushButton" name="test">
+   <property name="geometry">
+    <rect>
+     <x>800</x>
+     <y>80</y>
+     <width>81</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Inter</family>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+border: none;
+color: rgba(6, 60, 153, 1);
+}
+
+QPushButton:hover { 
+text-decoration: underline; 
+}</string>
+   </property>
+   <property name="text">
+    <string>Edit</string>
+   </property>
+  </widget>
  </widget>
  <resources>
-  <include location="../Assets/resource.qrc"/>
+  <include location="../Assets/Add.qrc"/>
  </resources>
  <connections/>
 </ui>

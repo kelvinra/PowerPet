@@ -7,7 +7,7 @@ import sqlite3 as sql
 class InputJadwal(QDialog):
     
 
-    def __init__(self, ID_Hewan):
+    def __init__(self):
         super(InputJadwal, self).__init__()
         loadUi('src/BuilderUI/InputJadwal.ui', self)
         calendar = self.findChild(QtWidgets.QCalendarWidget, "calendarWidget")
@@ -33,10 +33,12 @@ class InputJadwal(QDialog):
 
         self.calendar = calendar
         self.selected_date = selected_date
-        self.ID_Hewan = ID_Hewan
+        self.ID_Hewan = 0
         self.nama_kegiatan = nama_kegiatan
         self.prioritas = prioritas
 
+    def idData(self, id):
+        self.ID_Hewan = id
     def on_confirm_clicked(self):
         if self.selected_date.toString("yyyy-MM-dd") and self.nama_kegiatan.text():
             self.insert_to_database()

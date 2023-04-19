@@ -41,7 +41,7 @@ background-image: url(src/Assets/Menu.png);
    </property>
    <property name="font">
     <font>
-     <family>MS Shell Dlg 2</family>
+     <family>Inter</family>
      <pointsize>18</pointsize>
     </font>
    </property>
@@ -70,7 +70,7 @@ text-decoration: underline;
    </property>
    <property name="font">
     <font>
-     <family>MS Shell Dlg 2</family>
+     <family>Inter</family>
      <pointsize>18</pointsize>
     </font>
    </property>
@@ -100,7 +100,7 @@ text-decoration: underline;
    </property>
    <property name="font">
     <font>
-     <family>MS Shell Dlg 2</family>
+     <family>Inter</family>
      <pointsize>18</pointsize>
     </font>
    </property>
@@ -129,7 +129,7 @@ text-decoration: underline;
     </rect>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="page">
     <widget class="QFrame" name="frame1">
@@ -161,7 +161,7 @@ text-decoration: underline;
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>70</x>
+        <x>40</x>
         <y>140</y>
         <width>151</width>
         <height>31</height>
@@ -169,6 +169,8 @@ text-decoration: underline;
       </property>
       <property name="font">
        <font>
+        <family>Inter</family>
+        <pointsize>12</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -233,7 +235,7 @@ background-color: rgb(255,255,255)</string>
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>70</x>
+        <x>40</x>
         <y>140</y>
         <width>201</width>
         <height>31</height>
@@ -241,6 +243,8 @@ background-color: rgb(255,255,255)</string>
       </property>
       <property name="font">
        <font>
+        <family>Inter</family>
+        <pointsize>12</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -305,7 +309,7 @@ background-color: rgb(255,255,255)</string>
      <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
-        <x>70</x>
+        <x>40</x>
         <y>140</y>
         <width>201</width>
         <height>31</height>
@@ -313,6 +317,8 @@ background-color: rgb(255,255,255)</string>
       </property>
       <property name="font">
        <font>
+        <family>Inter</family>
+        <pointsize>12</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -378,7 +384,7 @@ background-color: rgb(255,255,255)</string>
      <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
-        <x>70</x>
+        <x>40</x>
         <y>140</y>
         <width>201</width>
         <height>31</height>
@@ -386,6 +392,8 @@ background-color: rgb(255,255,255)</string>
       </property>
       <property name="font">
        <font>
+        <family>Inter</family>
+        <pointsize>12</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -629,15 +637,15 @@ background-color: rgb(255,255,255)</string>
    <property name="geometry">
     <rect>
      <x>200</x>
-     <y>810</y>
+     <y>795</y>
      <width>281</width>
-     <height>61</height>
+     <height>51</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Inter</family>
-     <pointsize>24</pointsize>
+     <pointsize>22</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -648,7 +656,7 @@ background-color: rgb(255,255,255)</string>
    <property name="geometry">
     <rect>
      <x>500</x>
-     <y>750</y>
+     <y>730</y>
      <width>41</width>
      <height>28</height>
     </rect>
@@ -661,7 +669,7 @@ background-color: rgb(255,255,255)</string>
    <property name="geometry">
     <rect>
      <x>500</x>
-     <y>840</y>
+     <y>810</y>
      <width>41</width>
      <height>28</height>
     </rect>

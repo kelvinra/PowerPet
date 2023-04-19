@@ -175,3 +175,47 @@ class ArrowButton(QPushButton):
 
     def __setOpacity(self, opacity):
         self.__styleInit(opacity)
+
+class DeleteButton(QPushButton):
+    def __init__(self):
+        super().__init__()
+        self.__initUi()
+
+    def __initUi(self):
+        self.setText("X")
+        #set text allign center
+        
+        QFontDatabase.addApplicationFont("/home/kelvin/Documents/rpl/if2250-2023-k03-4-powerpet/src/Assets/JockeyOne-Regular.ttf")
+        self.setFixedSize(50, 50)
+        font = QFont("Inter", 20)
+        self.setFont(font)
+        # set pos button
+        self.setStyleSheet("background-color: rgb(255, 225, 248, 0.0);")
+        self.move(300, 700) 
+        self.__animation = QPropertyAnimation(self, b"opacity")
+        self.__animation.valueChanged.connect(self.__setOpacity)
+        self.__animation.setStartValue(0.0)
+        self.__animation.setEndValue(1.0)
+        self.__animation.setDuration(200)
+        self.__styleInit(0.0)
+
+    def __styleInit(self, opacity: float):
+        style = f'QPushButton {{ background-color: rgb(255, 0, 0, {opacity});' \
+                f'border: 0 ;' \
+                f'color: rgb(0, 0, 0);' \
+                f'padding: 5;' \
+                f'border-radius: 20px; }}'
+        self.setStyleSheet(style)
+    
+    def enterEvent(self, e):
+        self.__animation.setDirection(QAbstractAnimation.Forward)
+        self.__animation.start()
+        return super().enterEvent(e)
+
+    def leaveEvent(self, e):
+        self.__animation.setDirection(QAbstractAnimation.Backward)
+        self.__animation.start()
+        return super().leaveEvent(e)
+
+    def __setOpacity(self, opacity):
+        self.__styleInit(opacity)
