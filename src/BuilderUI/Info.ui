@@ -119,32 +119,6 @@ text-decoration: underline;
  Kesehatan</string>
    </property>
   </widget>
-  <widget class="QLabel" name="nama">
-   <property name="geometry">
-    <rect>
-     <x>220</x>
-     <y>700</y>
-     <width>219</width>
-     <height>76</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>nama</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="jenisHewan">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>800</y>
-     <width>270</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>jenis</string>
-   </property>
-  </widget>
   <widget class="QStackedWidget" name="stackedWidget">
    <property name="geometry">
     <rect>
@@ -155,7 +129,7 @@ text-decoration: underline;
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="page">
     <widget class="QFrame" name="frame1">
@@ -476,82 +450,66 @@ background-color: rgb(255,255,255)</string>
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QLabel" name="jenisMakanan">
+     <widget class="QLineEdit" name="editjenismakanan">
       <property name="geometry">
        <rect>
         <x>80</x>
         <y>40</y>
-        <width>331</width>
+        <width>441</width>
         <height>71</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>12</pointsize>
+        <family>Inter</family>
+        <pointsize>30</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:none</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="edit_5">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>80</y>
+        <width>41</width>
+        <height>28</height>
+       </rect>
       </property>
       <property name="text">
        <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="namaMakanan">
+     <widget class="QLineEdit" name="editnamamakanan">
       <property name="geometry">
        <rect>
         <x>80</x>
-        <y>130</y>
+        <y>140</y>
         <width>311</width>
         <height>51</height>
        </rect>
       </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-       </font>
+      <property name="styleSheet">
+       <string notr="true">border:none</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="edit_6">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>160</y>
+        <width>41</width>
+        <height>28</height>
+       </rect>
       </property>
       <property name="text">
        <string/>
       </property>
      </widget>
-    </widget>
-    <widget class="QPushButton" name="editButton2">
-     <property name="geometry">
-      <rect>
-       <x>750</x>
-       <y>480</y>
-       <width>56</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="autoFillBackground">
-      <bool>true</bool>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset theme="edit.png">
-       <normaloff>.</normaloff>.</iconset>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="addButton2">
-     <property name="geometry">
-      <rect>
-       <x>820</x>
-       <y>480</y>
-       <width>56</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="autoFillBackground">
-      <bool>true</bool>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset theme="edit.png">
-       <normaloff>.</normaloff>.</iconset>
-     </property>
     </widget>
    </widget>
    <widget class="QWidget" name="page_3">
@@ -612,46 +570,6 @@ background-color: rgb(255,255,255)</string>
       </property>
      </widget>
     </widget>
-    <widget class="QPushButton" name="addButton3">
-     <property name="geometry">
-      <rect>
-       <x>820</x>
-       <y>480</y>
-       <width>56</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="autoFillBackground">
-      <bool>true</bool>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset theme="edit.png">
-       <normaloff>.</normaloff>.</iconset>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="editButton3">
-     <property name="geometry">
-      <rect>
-       <x>750</x>
-       <y>480</y>
-       <width>56</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="autoFillBackground">
-      <bool>true</bool>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset theme="edit.png">
-       <normaloff>.</normaloff>.</iconset>
-     </property>
-    </widget>
    </widget>
   </widget>
   <widget class="QLabel" name="fotoHewan">
@@ -678,6 +596,72 @@ background-color: rgb(255,255,255)</string>
    </property>
    <property name="styleSheet">
     <string notr="true">border:none</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="editnama">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>700</y>
+     <width>281</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Inter</family>
+     <pointsize>27</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border:none</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="editjenis">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>810</y>
+     <width>281</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Inter</family>
+     <pointsize>24</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border:none</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="edit_7">
+   <property name="geometry">
+    <rect>
+     <x>500</x>
+     <y>750</y>
+     <width>41</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="edit_8">
+   <property name="geometry">
+    <rect>
+     <x>500</x>
+     <y>840</y>
+     <width>41</width>
+     <height>28</height>
+    </rect>
    </property>
    <property name="text">
     <string/>

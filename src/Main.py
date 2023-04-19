@@ -49,7 +49,6 @@ class app(QApplication):
             self.menu.buttons[i].clicked.connect(partial(self.showDetail, i))
     
     def showDetail(self, i):
-        print("kontol")
         self.widget.setCurrentIndex(4)
         self.info.showData(i+1)
 

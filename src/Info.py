@@ -67,6 +67,18 @@ class InfoWindow(QDialog):
         self.pixmap = QtGui.QPixmap('src/Assets/edit.png')
         self.edit_4.setIcon(QtGui.QIcon(self.pixmap))
         self.edit_4.clicked.connect(self.editTextBerat)
+        self.pixmap = QtGui.QPixmap('src/Assets/edit.png')
+        self.edit_5.setIcon(QtGui.QIcon(self.pixmap))
+        self.edit_5.clicked.connect(self.editTextJenisMakanan)
+        self.pixmap = QtGui.QPixmap('src/Assets/edit.png')
+        self.edit_6.setIcon(QtGui.QIcon(self.pixmap))
+        self.edit_6.clicked.connect(self.editTextNamaMakanan)
+        self.pixmap = QtGui.QPixmap('src/Assets/edit.png')
+        self.edit_7.setIcon(QtGui.QIcon(self.pixmap))
+        self.edit_7.clicked.connect(self.editTextNama)
+        self.pixmap = QtGui.QPixmap('src/Assets/edit.png')
+        self.edit_8.setIcon(QtGui.QIcon(self.pixmap))
+        self.edit_8.clicked.connect(self.editTextJenis)
 
         self.fotoLbl = self.findChild(QLabel, 'fotoHewan')
         self.namaLbl = self.findChild(QLabel, 'nama')
@@ -80,14 +92,19 @@ class InfoWindow(QDialog):
         self.mafabtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
         self.cakebtn.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
         # self.editbtn.clicked.connect(lambda: self.editDetailInfo)
+        self.editnama.setEnabled(False)
+
+        self.editjenis.setEnabled(False)
         self.editumur.setEnabled(False)
         self.editgender.setEnabled(False)
         self.editberat.setEnabled(False)
         self.editlahir.setEnabled(False)
+        self.editjenismakanan.setEnabled(False)
+        self.editnamamakanan.setEnabled(False)
+
 
 
     def showData (self, ID) :
-        print("bau")
         self.idData = ID
         self.con = mdb.connect('src/DataBase/Hewan.db')
         self.cur = self.con.cursor()
@@ -105,13 +122,13 @@ class InfoWindow(QDialog):
 
         self.cur.execute("SELECT nama FROM Hewan WHERE ID =?", (ID,))
         nama = self.cur.fetchone()[0]
-        self.namaLbl.setText(nama)
-        self.namaLbl.show()
+        self.editnama.setText(nama)
+        # self.namaLbl.show()
         
         self.cur.execute("SELECT jenis FROM Hewan WHERE ID =?", (ID,))
         jenis = self.cur.fetchone()[0]
-        self.jenisLbl.setText(jenis)
-        self.jenisLbl.show()
+        self.editjenis.setText(jenis)
+        # self.jenisLbl.show()
 
         self.cur.execute("SELECT umur FROM Hewan WHERE ID =?", (ID,))
         umur = self.cur.fetchone()[0]
@@ -139,6 +156,11 @@ class InfoWindow(QDialog):
 
         self.cur.execute("SELECT jenisMakanan FROM Makanan WHERE ID =?", (ID,))
         makanan = self.cur.fetchone()[0]
+        self.editjenismakanan.setText(makanan)
+        
+        self.cur.execute("SELECT namaMakanan FROM Makanan WHERE ID =?", (ID,))
+        namamakanan = self.cur.fetchone()[0]
+        self.editnamamakanan.setText(namamakanan)
 
 
 
@@ -180,6 +202,74 @@ class InfoWindow(QDialog):
             self.editberat.show()
             self.editberat.setFocus()
             self.editberat.editingFinished.connect(self.editBerat)
+    
+    def editTextJenisMakanan(self):
+        if self.editjenismakanan.isEnabled():
+            self.editjenismakanan.setEnabled(False)
+        else:
+            self.editjenismakanan.setEnabled(True)
+            self.editjenismakanan.show()
+            self.editjenismakanan.setFocus()
+            self.editjenismakanan.editingFinished.connect(self.editJenisMakanan)
+
+    def editTextNamaMakanan(self):
+        if self.editnamamakanan.isEnabled():
+            self.editnamamakanan.setEnabled(False)
+        else:
+            self.editnamamakanan.setEnabled(True)
+            self.editnamamakanan.show()
+            self.editnamamakanan.setFocus()
+            self.editnamamakanan.editingFinished.connect(self.editNamaMakanan)
+    
+    def editTextNama(self):
+        if self.editnama.isEnabled():
+            self.editnama.setEnabled(False)
+        else:
+            self.editnama.setEnabled(True)
+            self.editnama.show()
+            self.editnama.setFocus()
+            self.editnama.editingFinished.connect(self.editNama)
+    
+    def editTextJenis(self):
+        if self.editjenis.isEnabled():
+            self.editjenis.setEnabled(False)
+        else:
+            self.editjenis.setEnabled(True)
+            self.editjenis.show()
+            self.editjenis.setFocus()
+            self.editjenis.editingFinished.connect(self.editJenis)
+    
+    def editNama(self):
+        self.con = mdb.connect('src/DataBase/Hewan.db')
+        self.cur = self.con.cursor()
+        self.cur.execute("UPDATE Hewan SET nama = ? WHERE ID = ?", (self.editnama.text(), self.idData))
+        self.con.commit()
+        self.con.close()
+        self.showData(self.idData)
+    
+    def editJenis(self):
+        self.con = mdb.connect('src/DataBase/Hewan.db')
+        self.cur = self.con.cursor()
+        self.cur.execute("UPDATE Hewan SET jenis = ? WHERE ID = ?", (self.editjenis.text(), self.idData))
+        self.con.commit()
+        self.con.close()
+        self.showData(self.idData)
+
+    def editJenisMakanan(self):
+        self.con = mdb.connect('src/DataBase/Hewan.db')
+        self.cur = self.con.cursor()
+        self.cur.execute("UPDATE Makanan SET jenisMakanan = ? WHERE ID = ?", (self.editjenismakanan.text(), self.idData))
+        self.con.commit()
+        self.con.close()
+        self.showData(self.idData)
+    
+    def editNamaMakanan(self):
+        self.con = mdb.connect('src/DataBase/Hewan.db')
+        self.cur = self.con.cursor()
+        self.cur.execute("UPDATE Makanan SET namaMakanan = ? WHERE ID = ?", (self.editnamamakanan.text(), self.idData))
+        self.con.commit()
+        self.con.close()
+        self.showData(self.idData)
 
     def editBerat(self):
         # self.editberat.setEnabled(False)
