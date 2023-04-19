@@ -1,4 +1,5 @@
 import sys
+from functools import partial
 from PyQt5 import sip
 from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUi
@@ -35,10 +36,24 @@ class MenuWindow(QDialog):
         self.carousel = QFrame(self)
         self.carouselLayout = QHBoxLayout(self.carousel)
         self.sidebarcounter = 0
+        self.editCounter = 0
         self.frames = []
         self.buttons = []
+        self.deleteframes = []
+        self.deletebuttons = []
+        # self.test = self.findChild(QPushButton, 'test')
+        self.test.clicked.connect(self.showDeletebtn)
         
-
+    def showDeletebtn(self):
+        if self.editCounter == 0:
+            for i in self.deleteframes:
+                i.show()
+            self.editCounter = 1
+        else:
+            for i in self.deleteframes:
+                i.hide()
+            self.editCounter = 0
+        
         # set the QStackedLayout as the layout for the carousel widget
     def populateFrame(self):
         self.deleteLayout(self.frame.layout())
@@ -69,6 +84,8 @@ class MenuWindow(QDialog):
         self.buttons.clear()
         self.frames = []
         self.buttons = []
+        self.deleteframes = []
+        self.deletebuttons = []
         self.createCard()
 
     def slideleft(self):
@@ -125,11 +142,13 @@ class MenuWindow(QDialog):
         self.con = mdb.connect('src\DataBase\Hewan.db')
         # self.con.execute("INSERT INTO Hewan (ID,nama,jenis,umur,birthdate,berat,foto) VALUES (2, 'Anjing', 'Mamalia', 3, '2018-01-02', 10, 'D:\Downloads\image 4.png')")
         self.cur = self.con.cursor()
-        self.cur.execute("SELECT ID, nama, jenis, foto FROM Hewan")
+        self.cur.execute("SELECT ID, nama, jenis, foto FROM Hewan order by ID")
         rows = self.cur.fetchall()
         i = 1
         self.frames = []
         self.buttons = []
+        self.deleteframes = []
+        self.deletebuttons = []
         for row in rows:
         # set the geometry of the frame
             self.frame = QFrame(self.carousel)
@@ -148,6 +167,20 @@ class MenuWindow(QDialog):
             self.frame.setGraphicsEffect(shadow)
             name = "frame" + str(i)
             self.frame.setObjectName("frame{}".format(i))
+
+            self.deleteframe = QFrame(self.frame)
+            self.deleteframe.setGeometry(QRect(0, 0, 50, 50))
+            self.deleteframe.setMaximumSize(50, 50)  # set the maximum size of the frame[count]
+            self.deleteframe.setMinimumSize(50, 50)  # set the minimum size of the frame[count]
+            self.deleteframe.setFrameShape(QFrame.StyledPanel)  # set a shape for the frame
+            self.deleteframe.setStyleSheet("background-color: #FFFFFF; opacity:1.0; border-radius: 20px; border: 2px solid rgba(0, 0, 0, 0.05);")
+            self.deleteframes.append(self.deleteframe)
+
+            self.deletebtn = btn.DeleteButton()
+            self.deletebtn.setParent(self.deleteframe)
+            self.deletebtn.setGeometry(QRect(0, 0, 50, 50))
+            self.deletebuttons.append(self.deletebtn)
+
             
             # create Label in frame
             self.label = QLabel(self.frame)
@@ -193,28 +226,8 @@ class MenuWindow(QDialog):
             self.carousel.setLayout(self.carouselLayout)
             i += 1
         
-        self.frame1 = self.findChild(QFrame, "frame1")
-        self.frame2 = self.findChild(QFrame, "frame2")
-        self.frame3 = self.findChild(QFrame, "frame3")
-        self.frame4 = self.findChild(QFrame, "frame4")
-        self.frame5 = self.findChild(QFrame, "frame5")
-        self.frame6 = self.findChild(QFrame, "frame6")
-        self.frame7 = self.findChild(QFrame, "frame7")
-        self.frame8 = self.findChild(QFrame, "frame8")
-        self.frame9 = self.findChild(QFrame, "frame9")
-        self.frame10 = self.findChild(QFrame, "frame10")
-        self.frame11 = self.findChild(QFrame, "frame11")
-        self.button1 = self.findChild(btn.DetailButton, "detail1")
-        self.button2 = self.findChild(btn.DetailButton, "detail2")
-        self.button3 = self.findChild(btn.DetailButton, "detail3")
-        self.button4 = self.findChild(btn.DetailButton, "detail4")
-        self.button5 = self.findChild(btn.DetailButton, "detail5")
-        self.button6 = self.findChild(btn.DetailButton, "detail6")
-        self.button7 = self.findChild(btn.DetailButton, "detail7")
-        self.button8 = self.findChild(btn.DetailButton, "detail8")
-        self.button9 = self.findChild(btn.DetailButton, "detail9")
-        self.button10 = self.findChild(btn.DetailButton, "detail10")
-        self.button11 = self.findChild(btn.DetailButton, "detail11")
+        for i in range (0, len(self.deletebuttons)):
+            self.deletebuttons[i].clicked.connect(partial(self.deleteCard, i+1))
         if self.frames.count == 1:
             self.frame1.hide()
         elif self.frames.count == 2:
@@ -223,10 +236,8 @@ class MenuWindow(QDialog):
             self.frame3.hide()
         elif self.frames.count == 4:
             self.frame4.hide()
-        # self.animasi1 = self.animate(self.frame1, 0)
-        # self.animasi2 = self.animate(self.frame2, 480)
-        # self.animasi3 = self.animate(self.frame3, 960)
-        # self.animasi4 = self.animate(self.frame4, 1440)
+        for deleteframe in self.deleteframes:
+            deleteframe.hide()
     
         self.group_animation = QParallelAnimationGroup()
         j = 0
@@ -242,7 +253,14 @@ class MenuWindow(QDialog):
         self.group_animation.start()
         self.con.close()
 
-    
+    def deleteCard(self, id):
+        self.con = mdb.connect('src\DataBase\Hewan.db')
+        self.cur = self.con.cursor()
+        self.cur.execute("DELETE FROM Hewan WHERE ID = " + str(id))
+        self.con.commit()
+        self.con.close()
+        self.resetPage()
+        
 
     def filterHewan(self):
         self.con = mdb.connect('src\DataBase\Hewan.db')
