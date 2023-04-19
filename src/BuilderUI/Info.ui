@@ -869,19 +869,6 @@ background-color: #aaffff;
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="jadwalbtn">
-   <property name="geometry">
-    <rect>
-     <x>1470</x>
-     <y>80</y>
-     <width>93</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Jadwal</string>
-   </property>
-  </widget>
  </widget>
  <resources>
   <include location="../Assets/edit.qrc"/>
