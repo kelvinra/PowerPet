@@ -57,17 +57,9 @@ class AddWindow(QDialog):
         self.cur.execute("SELECT count(ID) FROM Hewan")
         rows = self.cur.fetchall()
         id = rows[0][0]+1
-        
-        
         q1 = "INSERT INTO Hewan (ID,nama,jenis,umur,birthdate,berat,gender, foto) VALUES (" + str(id) + ", '" + self.inputHewan.text() + "', '" + self.inputJenis.text() + "', " + self.inputUmur.text() + ", '" + self.inputBirth.text() + "', " + self.inputBerat.text() + ", '"+ self.inputGender.text() + "', '" + self.fileName + "')"
         self.con.execute(q1)
-       
         self.con.commit() 
-
-    
-        
-
-            
         self.con.close()
 
     def saveDataMakanan (self):
@@ -89,7 +81,7 @@ class AddWindow(QDialog):
         id = rows[0][0]+1
         q1 = "INSERT INTO Kesehatan (ID,catatanKesehatan,periode,tanggalPeriksa) VALUES (" + str(id) + ", '" + self.inputKesehatan.text() + "', '" + self.inputPeriode.text() + "', '" + self.inputTanggalKesehatan.text() + "')"
         self.con.execute(q1)
-        # self.con.commit()
+        self.con.commit()
         self.con.close()
     
     def submitData(self):

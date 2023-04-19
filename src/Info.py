@@ -29,31 +29,10 @@ class InfoWindow(QDialog):
         
         
         
-        
-        # self.foodNameLbl = self.findChild(QLabel, 'namaMakanan')
-        # self.foodDescLbl = self.findChild(QLabel, 'jenisMakanan')
-        # self.infoKesLbl = self.findChild(QLabel, 'infoKes')
-        # self.descKesLbl = self.findChild(QLabel, 'descKes')
-        
-        #set ikon tombol 
-
-        # self.pixmap = QtGui.QPixmap('src/Assets/edit.png')
-        # self.editbtn.setIcon(QtGui.QIcon(self.pixmap))
-
-        # self.pixmap = QtGui.QPixmap('src/Assets/add.png')
-        # self.addbtn.setIcon(QtGui.QIcon(self.pixmap))
-
-        # self.pixmap = QtGui.QPixmap('src/Assets/edit.png')
-        # self.editbtn2.setIcon(QtGui.QIcon(self.pixmap))
-
-        # self.pixmap = QtGui.QPixmap('src/Assets/add.png')
-        # self.addbtn2.setIcon(QtGui.QIcon(self.pixmap))
-
-        # self.pixmap = QtGui.QPixmap('src/Assets/edit.png')
-        # self.editbtn3.setIcon(QtGui.QIcon(self.pixmap))
-
-        # self.pixmap = QtGui.QPixmap('src/Assets/add.png')
-        # self.addbtn3.setIcon(QtGui.QIcon(self.pixmap))
+        self.jadwalbutton = btn.AddHButton()
+        self.jadwalbutton.setParent(self)
+        self.jadwalbutton.setGeometry(1470, 80, 93, 28)
+        self.jadwalbutton.setText("Jadwal")
 
         self.pixmap = QtGui.QPixmap('src/Assets/edit.png')
         self.edit.setIcon(QtGui.QIcon(self.pixmap))
@@ -180,9 +159,11 @@ class InfoWindow(QDialog):
         self.addcatkesButton = self.findChild(QPushButton, 'addCatkesButton')
         self.addcatkesButton.clicked.connect(self.add_catkes_empty_card)
 
+        self.con.close()
+        
         self.update_catkes_cards()
 
-        self.con.close()
+
 
 
     def editTextUmur(self):
@@ -326,11 +307,11 @@ class InfoWindow(QDialog):
         self.showData(self.idData)
     
     def load_catkes_data(self):
-        con = mdb.connect("src/DataBase/Hewan.db")
-        cur = con.cursor()
-        cur.execute("SELECT * FROM Kesehatan WHERE ID_Hewan = ?", (self.idData,))
-        data = cur.fetchall()
-        con.close()
+        self.con = mdb.connect("src/DataBase/Hewan.db")
+        self.cur = self.con.cursor()
+        self.cur.execute("SELECT * FROM Kesehatan WHERE ID_Hewan = ?", (self.idData,))
+        data = self.cur.fetchall()
+        self.con.close()
         return data
     
     def add_catkes_card(self, catatan, periode, tanggal):
@@ -447,14 +428,14 @@ class InfoWindow(QDialog):
         edit_button = card.findChild(QtWidgets.QPushButton, "edit")
         edit_button.setText("Edit")
         edit_button.clicked.connect(lambda: self.edit_card(card))
-        con = mdb.connect("src/DataBase/Hewan.db")
-        cur = con.cursor()
+        self.con = mdb.connect("src/DataBase/Hewan.db")
+        self.cur = self.con.cursor()
         if c == "" and p == "" and t == "" and catatan.text() and periode.text() and tanggal.text():
-            cur.execute("INSERT INTO Kesehatan (ID_Hewan, catatan, periode, tanggal) VALUES (?, ?, ?, ?)", (self.idData, catatan.text(), periode.text(), tanggal.text()))
+            self.cur.execute("INSERT INTO Kesehatan (ID_Hewan, catatan, periode, tanggal) VALUES (?, ?, ?, ?)", (self.idData, catatan.text(), periode.text(), tanggal.text()))
         else:
-            cur.execute("UPDATE Kesehatan SET catatan = ?, periode = ?, tanggal = ? WHERE ID_Hewan = ? AND catatan = ? AND periode = ? AND tanggal = ?", (catatan.text(), periode.text(), tanggal.text(), self.idData, c, p, t))
-        con.commit()
-        con.close()   
+            self.cur.execute("UPDATE Kesehatan SET catatan = ?, periode = ?, tanggal = ? WHERE ID_Hewan = ? AND catatan = ? AND periode = ? AND tanggal = ?", (catatan.text(), periode.text(), tanggal.text(), self.idData, c, p, t))
+        self.con.commit()
+        self.con.close()   
 
     def delete_card(self, card):
         self.catKesLayout.removeWidget(card)
@@ -462,11 +443,11 @@ class InfoWindow(QDialog):
         catatan = card.findChild(QtWidgets.QLineEdit, "catatan")
         periode = card.findChild(QtWidgets.QLineEdit, "periode")
         tanggal = card.findChild(QtWidgets.QLineEdit, "tanggal")
-        con = mdb.connect("src/DataBase/Hewan.db")
-        cur = con.cursor()
-        cur.execute("DELETE FROM Kesehatan WHERE ID_Hewan = ? AND Catatan = ? AND Periode = ? AND Tanggal = ?", (self.idData, catatan.text(), periode.text(), tanggal.text()))
-        con.commit()
-        con.close()
+        self.con = mdb.connect("src/DataBase/Hewan.db")
+        self.cur = self.con.cursor()
+        self.cur.execute("DELETE FROM Kesehatan WHERE ID_Hewan = ? AND Catatan = ? AND Periode = ? AND Tanggal = ?", (self.idData, catatan.text(), periode.text(), tanggal.text()))
+        self.con.commit()
+        self.con.close()
 
     def delete_catkes_cards(self):
         for i in reversed(range(self.catKesLayout.count())): 

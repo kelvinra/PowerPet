@@ -36,31 +36,6 @@ background-color: rgb(156, 235, 252, 0);
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="Add">
-   <property name="geometry">
-    <rect>
-     <x>1700</x>
-     <y>80</y>
-     <width>151</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Arial</family>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton{
-background-color: rgb(243, 103, 72, 1);
-border-radius : 8px
-}</string>
-   </property>
-   <property name="text">
-    <string>Tambah Hewan</string>
-   </property>
-  </widget>
  </widget>
  <resources/>
  <connections/>

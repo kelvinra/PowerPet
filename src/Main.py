@@ -43,7 +43,7 @@ class app(QApplication):
         self.add.backHome.clicked.connect(lambda: self.backHome())
         self.klinik.backHome.clicked.connect(lambda: self.backHome())
         self.info.backHome.clicked.connect(lambda: self.backHome())
-        self.info.jadwalbtn.clicked.connect(lambda: self.jadwalPage())
+        self.info.jadwalbutton.clicked.connect(lambda: self.jadwalPage())
         self.tampilJadwal.backbtn.clicked.connect(lambda: self.widget.setCurrentIndex(4))
         self.tampilJadwal.addJadwalButton.clicked.connect(lambda: self.widget.setCurrentIndex(6))
         self.inputJadwal.backbtn.clicked.connect(self.jadwalPage)
