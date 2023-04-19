@@ -177,6 +177,9 @@ class InfoWindow(QDialog):
         namamakanan = self.cur.fetchone()[0]
         self.editnamamakanan.setText(namamakanan)
 
+        self.addcatkesButton = self.findChild(QPushButton, 'addCatkesButton')
+        self.addcatkesButton.clicked.connect(self.add_catkes_empty_card)
+
         self.update_catkes_cards()
 
         self.con.close()
@@ -334,7 +337,7 @@ class InfoWindow(QDialog):
         # set min max card size
         card.setMinimumSize(493, 86)
         card.setMaximumSize(493, 86)
-        card.setStyleSheet("background-color: #FD7F63; border-radius: 20px;")
+        card.setStyleSheet("background-color: #FFFFFF; border-radius: 20px;")
         card.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
 
         # add shadow to the card
@@ -364,32 +367,32 @@ class InfoWindow(QDialog):
         layout4.setSpacing(0)
 
         catatan_label = QtWidgets.QLineEdit(catatan)
-        catatan_label.setStyleSheet("color: #FFFFFF; font-size: 24px;")
+        catatan_label.setStyleSheet("color: black; font-size: 24px; font-family: Inter;")
         catatan_label.setReadOnly(True)
         catatan_label.setObjectName("catatan")
         
         periode_label = QtWidgets.QLineEdit(periode)
-        periode_label.setStyleSheet("color: #FFFFFF; font-size: 28px;")
+        periode_label.setStyleSheet("color: black; font-size: 28px; font-weight: bold; font-family: Inter;")
         periode_label.setReadOnly(True)
         periode_label.setObjectName("periode")
 
         tanggal_label = QtWidgets.QLineEdit(tanggal)
-        tanggal_label.setStyleSheet("color: #FFFFFF; font-size: 20px;")
+        tanggal_label.setStyleSheet("color: black; font-size: 20px; font-family: Inter; font-weight: 300;")
         tanggal_label.setReadOnly(True)
         tanggal_label.setObjectName("tanggal")
 
         per_label = QtWidgets.QLabel("per")
-        per_label.setStyleSheet("color: #FFFFFF; font-size: 10px;")
+        per_label.setStyleSheet("color: black; font-size: 10px; font-family: Inter;")
         bulan_label = QtWidgets.QLabel("bulan")
-        bulan_label.setStyleSheet("color: #FFFFFF; font-size: 12px;")
+        bulan_label.setStyleSheet("color: black; font-size: 12px; font-family: Inter;")
 
         edit_button = QtWidgets.QPushButton("Edit")
         edit_button.clicked.connect(lambda: self.edit_card(card))
         edit_button.setObjectName("edit")
-        edit_button.setStyleSheet("QPushButton {color: #FFFFFF; font-size: 12px; background-color: gray; border-radius: 5px; padding: 5px; margin: 5px; border: 1px solid #FFFFFF;} QPushButton:hover {background-color: #FFFFFF; color: #FD7F63;}")
+        edit_button.setStyleSheet("QPushButton {color: #FFFFFF; font-family: Inter; font-size: 12px; background-color: gray; border-radius: 5px; padding: 5px; margin: 5px; border: 1px solid black;} QPushButton:hover {background-color: #FFFFFF; color: black;}")
         delete_button = QtWidgets.QPushButton("Delete")
         delete_button.clicked.connect(lambda: self.delete_card(card))
-        delete_button.setStyleSheet("QPushButton {color: #FFFFFF; font-size: 12px; background-color: gray; border-radius: 5px; padding: 5px; margin: 5px; border: 1px solid #FFFFFF;} QPushButton:hover {background-color: #FFFFFF; color: #FD7F63;}")
+        delete_button.setStyleSheet("QPushButton {color: #FFFFFF; font-size: 12px; font-family: Inter; background-color: gray; border-radius: 5px; padding: 5px; margin: 5px; border: 1px solid black;} QPushButton:hover {background-color: #FFFFFF; color: black;}")
 
         layout1.addWidget(tanggal_label)
 
@@ -407,7 +410,7 @@ class InfoWindow(QDialog):
         layout3.setAlignment(QtCore.Qt.AlignCenter)
         layout4.setAlignment(QtCore.Qt.AlignCenter)
 
-        layout.addLayout(layout1, 4)
+        layout.addLayout(layout1, 6)
         layout.addLayout(layout2, 3)
         layout.addLayout(layout3, 6)
         layout.addLayout(layout4, 2)
@@ -445,10 +448,13 @@ class InfoWindow(QDialog):
         edit_button.clicked.connect(lambda: self.edit_card(card))
         con = mdb.connect("src/DataBase/Hewan.db")
         cur = con.cursor()
-        cur.execute("UPDATE Kesehatan SET catatan = ?, periode = ?, tanggal = ? WHERE ID_Hewan = ? AND catatan = ? AND periode = ? AND tanggal = ?", (catatan.text(), periode.text(), tanggal.text(), self.idData, c, p, t))
+        if c == "" and p == "" and t == "":
+            cur.execute("INSERT INTO Kesehatan (ID_Hewan, catatan, periode, tanggal) VALUES (?, ?, ?, ?)", (self.idData, catatan.text(), periode.text(), tanggal.text()))
+        else:
+            cur.execute("UPDATE Kesehatan SET catatan = ?, periode = ?, tanggal = ? WHERE ID_Hewan = ? AND catatan = ? AND periode = ? AND tanggal = ?", (catatan.text(), periode.text(), tanggal.text(), self.idData, c, p, t))
         con.commit()
         con.close()   
-        
+
     def delete_card(self, card):
         self.catKesLayout.removeWidget(card)
         card.deleteLater()
@@ -471,4 +477,5 @@ class InfoWindow(QDialog):
         for catkes in data:
             self.add_catkes_card(catkes[2], catkes[3], catkes[4])
 
-    
+    def add_catkes_empty_card(self):
+        self.add_catkes_card("", "", "")
