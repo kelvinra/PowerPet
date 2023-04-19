@@ -32,3 +32,15 @@
 <br/>
 <br/>
 
+## Modules
+1. logoScreen (13521005 Kelvin Rayhan Alkarim)
+2. tampil DaftarHewan (13521005 Kelvin Rayhan Alkarim)
+3. input Data Hewan (13521005 Kelvin Rayhan Alkarim)
+4. tampil informasi Hewan (13521005 Kelvin Rayhan Alkarim, 13521020 Varraz Hazzandra   Abrar, 13521026 Kartini Copa, 13521029 M Malik I Baharsyah)
+5. tampil daftar klinik (13521026 Kartini Copa)
+6. tampil Jadwal Kegiatan (13521029 M Malik I Baharsyah)
+7. input Jadwal Kegiatan (13521029 M Malik I Baharsyah)
+8. Delete hewan (13521005 Kelvin Rayhan Alkarim)
+9. Ubah Informasi Detail Hewan (13521005 Kelvin Rayhan Alkarim)
+10. Ubah Catatan Kesehatan Hewan (13521029 M Malik I Baharsyah) 
+
