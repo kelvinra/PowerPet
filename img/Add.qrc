@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="logo">
+    <file>Menu.png</file>
+    <file>Group 8.png</file>
+  </qresource>
+</RCC>

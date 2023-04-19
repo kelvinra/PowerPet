@@ -37,6 +37,7 @@ class InputJadwal(QDialog):
         self.ID_Hewan = 0
         self.nama_kegiatan = nama_kegiatan
         self.prioritas = prioritas
+        self.notif_container.hide()
 
     def idData(self, id):
         self.ID_Hewan = id
