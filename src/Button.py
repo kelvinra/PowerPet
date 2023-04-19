@@ -175,3 +175,50 @@ class ArrowButton(QPushButton):
 
     def __setOpacity(self, opacity):
         self.__styleInit(opacity)
+
+
+class editButton(QPushButton):
+    def __init__(self):
+        super().__init__()
+        self.__initUi()
+
+    def __initUi(self):
+        self.setIcon(QIcon('src/Assets/edit.png'))
+        self.setIconSize(QSize(20, 20))
+        self.setFixedSize(30, 30)
+        self.setStyleSheet('''
+            QPushButton {
+                border-radius: 100px;
+                background-color: #71DBF2;
+                border: none;
+            }
+            QPushButton:hover {
+                background-color: #5DC6D8;
+            }
+            QPushButton:pressed {
+                background-color: #4FA8B6;
+            }
+        ''')
+
+class addButton(QPushButton):
+    def __init__(self):
+        super().__init__()
+        self.__initUi()
+
+    def __initUi(self):
+        self.setIcon(QIcon('src/Assets/add.png'))
+        self.setIconSize(QSize(20, 20))
+        self.setFixedSize(30, 30)
+        self.setStyleSheet('''
+            QPushButton {
+                border-radius: 100px;
+                background-color: #71DBF2;
+                border: none;
+            }
+            QPushButton:hover {
+                background-color: #5DC6D8;
+            }
+            QPushButton:pressed {
+                background-color: #4FA8B6;
+            }
+        ''')
